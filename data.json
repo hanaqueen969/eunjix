@@ -1,5 +1,24 @@
 [
     {
+        "name": "Nusantara-SiXtY-N9-X00T-08042026-10.0.14",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 10",
+        "maintainer": "EunjiX",
+        "size": "751 MB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/Nusantara-SiXtY-N9-X00T-08042026-10.0.14/Nusantara-SiXtY-N9-X00T-Vanilla-08042026-10.0.14-0940-signed.zip",
+        "md5": "bb07823de442e902f331b320c126a4eb",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Merge 2025-12 ASB patching",
+            "Add prebuilt HarmonyMusic",
+            "Downgrade NFC interface",
+            "Include dolby atmos",
+            "Improved battery backup"
+        ]
+    },
+    {
         "name": "EvolutionX-16.0-20260401-11.6.2-Unofficial",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
