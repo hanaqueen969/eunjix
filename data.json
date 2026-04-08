@@ -1,0 +1,105 @@
+[
+    {
+        "name": "EvolutionX-16.0-20260401-11.6.2-Unofficial",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.7 GB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/EvolutionX-16/EvolutionX-16.0-20260401-X00TD-11.6.2-Vanilla-Unofficial.zip",
+        "md5": "8c11a363aa559ddc9887dfbd43e84399",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Initial Android 16 build",
+            "Include dolby atmos",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "lineage-17.1-20260305-UNOFFICIAL",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 10",
+        "maintainer": "EunjiX",
+        "size": "802 MB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/lineage-17.1-20260305/lineage-17.1-20260305-UNOFFICIAL-X00TD-signed.zip",
+        "md5": "5f6cf0ad2ac14ac31306a38c3eb656db",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Upstream with lineage ASB Gerrit",
+            "Include dolby atmos",
+            "Fixed Bluetooth issues",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "lineage-23.2-20260323-UNOFFICIAL",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.2 GB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/lineage-23/lineage-23.2-20260323-UNOFFICIAL-X00TD.zip",
+        "md5": "61f38460ae6dc52396530985979a7e3b",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Initial Android 16 build",
+            "Updated upstream kernel to 4.19.325-st14",
+            "Fixed Bluetooth audio stutter",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "voltage-5.8-20260405-1350-UNOFFICIAL",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.5 GB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/voltage-5/voltage-5.8-X00TD-20260405-1350-UNOFFICIAL.zip",
+        "md5": "e90e8d7c23526cfa8b7cd40e212823e8",
+        "gapps": false,
+        "safetynet": true,
+        "changelog": [
+            "Initial Android 16 build",
+            "Updated upstream kernel to 4.19.325-st14",
+            "Fixed Bluetooth audio stutter",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "TheOneMemory Kernel",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "Kernel",
+        "category": "Kernel",
+        "maintainer": "EunjiX",
+        "size": "17 MB",
+        "downloadLink": "https://www.pling.com/p/2259777",
+        "md5": "8a9c2b4d6e8f0a1c3b5d7e9f2a4c6b8d",
+        "changelog": [
+            "Merged latest Linux upstream CIP st14",
+            "Optimized CPU scheduler",
+            "Fixed deep sleep issues"
+        ]
+    },
+    {
+        "name": "Project_Infinity-X-3.9-05.04.2026-GAPPS-UNOFFICIAL",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.7 GB",
+        "downloadLink": "https://github.com/strongreasons/release/releases/download/Project_Infinity-X-3/Project_Infinity-X-3.9-X00TD-05.04.2026-GAPPS-UNOFFICIAL.zip",
+        "md5": "bca8bf55a4bc735e11136ff139f002e8",
+        "gapps": true,
+        "safetynet": true,
+        "changelog": [
+            "Added new monet colors",
+            "Updated SafetyNet patch",
+            "Minor bug fixes"
+        ]
+    }
+]

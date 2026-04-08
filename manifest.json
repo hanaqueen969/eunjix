@@ -1,0 +1,23 @@
+{
+    "name": "EunjiX",
+    "short_name": "EunjiX",
+    "description": "Custom ROM & Kernel Android Repository",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FEF7FF",
+    "theme_color": "#6750A4",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}

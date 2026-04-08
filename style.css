@@ -1,0 +1,372 @@
+:root {
+    --md-bg: #FEF7FF; --md-surface: #F3EDF7; --md-surface-variant: #E7E0EC;
+    --md-text: #1D1B20; --md-text-variant: #49454F; --md-primary: #6750A4;
+    --md-on-primary: #FFFFFF; --md-primary-container: #EADDFF; --md-on-primary-container: #21005D;
+    --md-outline: #79747E; --radius-card: 24px; --radius-pill: 50px;
+}
+
+body.dark-mode {
+    --md-bg: #141218; --md-surface: #211F26; --md-surface-variant: #49454F;
+    --md-text: #E6E0E9; --md-text-variant: #CAC4D0; --md-primary: #D0BCFF;
+    --md-on-primary: #381E72; --md-primary-container: #4F378B; --md-on-primary-container: #EADDFF;
+    --md-outline: #938F99;
+}
+
+body { font-family: 'Roboto', sans-serif; background-color: var(--md-bg); color: var(--md-text); margin: 0; padding: 0; transition: background-color 0.3s, color 0.3s; }
+
+header { background-color: transparent; color: var(--md-text); text-align: center; padding: 40px 20px 20px; position: relative; }
+.header-title { display: flex; justify-content: center; align-items: center; gap: 15px; }
+header h1 { margin: 0; font-size: 2.8rem; font-weight: 700; background: linear-gradient(to right, var(--md-primary), #00c6ff, #ff007f, var(--md-primary)); background-size: 300% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientWalk 6s infinite linear; }
+@keyframes gradientWalk { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }
+header p { margin-top: 10px; color: var(--md-text-variant); }
+/* --- KODE BARU: Desain Efek Mesin Tik --- */
+.subtitle {
+    margin-top: 10px; 
+    color: var(--md-text-variant);
+    min-height: 24px; /* Menjaga agar tinggi tidak melompat saat teks masih kosong */
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: var(--md-primary); /* Warna kursor ungu Material You */
+    animation: blink 1s step-end infinite; /* Animasi berkedip */
+    margin-left: 2px;
+}
+
+/* Sutradara Animasi Berkedip */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+body.dark-mode .logo { filter: invert(100%); }
+.logo { width: 60px; height: auto; animation: floatAnim 3s ease-in-out infinite; }
+@keyframes floatAnim { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } }
+
+/* Header Actions */
+.header-actions { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+.btn-action { background-color: var(--md-surface-variant); color: var(--md-text); border: none; padding: 10px 20px; border-radius: var(--radius-pill); cursor: pointer; font-size: 0.9rem; font-weight: 500; transition: all 0.3s; }
+.btn-action:hover { filter: brightness(0.95); }
+
+/* Search, Filter & Sort */
+.search-container { text-align: center; margin: 20px auto; padding: 0 20px; max-width: 600px; }
+.search-container input { width: 100%; padding: 18px 25px; font-size: 1.05rem; background-color: var(--md-surface-variant); color: var(--md-text); border: none; border-radius: var(--radius-pill); outline: none; transition: all 0.3s; box-sizing: border-box;}
+.search-container input:focus { box-shadow: 0 0 0 2px var(--md-primary); }
+
+/* --- KODE BARU: Desain Spesial Tombol Donasi --- */
+.btn-donate {
+    background-color: #FFD54F; /* Warna emas/kuning hangat khas kopi */
+    color: #4E342E; /* Teks warna cokelat gelap */
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Jarak antara ikon kopi dan teks */
+    font-weight: bold;
+    animation: detakJantung 2s infinite; /* Menambahkan animasi denyut */
+}
+
+.btn-donate:hover {
+    background-color: #FFCA28;
+    color: #3E2723;
+    animation: none; /* Matikan animasi saat disentuh mouse */
+    transform: scale(1.05); /* Membesar sedikit */
+}
+
+/* Sutradara Animasi Denyut Jantung */
+@keyframes detakJantung {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 213, 79, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0); }
+}
+
+/* Penyesuaian tombol donasi di Mode Gelap */
+body.dark-mode .btn-donate {
+    background-color: #F6B26B;
+    color: #121212;
+}
+
+/* --- KODE BARU: Desain Banner Disclaimer (Material You Error Container) --- */
+.disclaimer-banner {
+    max-width: 650px;
+    margin: 30px auto 0; /* Memberi jarak dari tombol di atasnya */
+    padding: 12px 20px;
+    background-color: #F9DEDC; /* Warna latar merah muda lembut */
+    color: #410E0B; /* Warna teks merah gelap */
+    border-radius: 16px; /* Melengkung rapi */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.disclaimer-banner p {
+    margin: 0;
+}
+
+/* Penyesuaian Banner Disclaimer di Mode Gelap */
+body.dark-mode .disclaimer-banner {
+    background-color: #8C1D18; /* Warna latar merah gelap */
+    color: #F9DEDC; /* Warna teks merah terang */
+}
+
+.filter-sort-wrapper { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 15px; }
+.filter-buttons { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.btn-filter { padding: 10px 20px; background-color: transparent; color: var(--md-text-variant); border: 1px solid var(--md-outline); border-radius: var(--radius-pill); cursor: pointer; font-size: 0.95rem; font-weight: 500; transition: all 0.2s; }
+.btn-filter.active, .btn-filter:hover { background-color: var(--md-primary-container); color: var(--md-on-primary-container); border-color: transparent; }
+
+.sort-dropdown { padding: 10px 20px; border-radius: var(--radius-pill); background-color: var(--md-surface); color: var(--md-text); border: 1px solid var(--md-outline); outline: none; font-family: inherit; font-size: 0.95rem; cursor: pointer; }
+
+/* Cards */
+.container { max-width: 1000px; margin: 20px auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.card { background-color: var(--md-surface); border-radius: var(--radius-card); padding: 24px; border: none; transition: transform 0.2s ease, background-color 0.3s; }
+.card:hover { background-color: var(--md-surface-variant); }
+.card h2 { 
+    margin-top: 5px; 
+    color: var(--md-text); 
+    font-size: 1.4rem; 
+    
+    /* Sihir Line Clamping */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Hanya tampilkan 2 baris maksimal */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4; /* Jarak rapi antar baris */
+}
+
+.badge { display: inline-block; padding: 6px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: bold; margin-bottom: 10px; }
+.badge-rom { background-color: #C4EED0; color: #072711; }
+.badge-kernel { background-color: #FFDCC3; color: #2E1500; }
+body.dark-mode .badge-rom { background-color: #0F5223; color: #C4EED0; }
+body.dark-mode .badge-kernel { background-color: #5C2700; color: #FFDCC3; }
+.detail-item { display: flex; justify-content: space-between; margin: 12px 0; font-size: 0.95rem; color: var(--md-text-variant); }
+
+.detail-item strong { 
+    color: var(--md-text); 
+    text-align: right; 
+    max-width: 65%; /* Mencegah teks menabrak label di sebelah kirinya */
+    word-wrap: break-word; /* Memaksa kata yang terlalu panjang untuk turun ke bawah */
+}
+
+/* Interactive Texts */
+.action-text { color: var(--md-primary); cursor: pointer; font-weight: bold; transition: color 0.3s; user-select: none; }
+.action-text:hover { text-decoration: underline; }
+.changelog-content { display: none; background-color: var(--md-surface-variant); padding: 15px; border-radius: 16px; margin-top: 10px; font-size: 0.9rem; color: var(--md-text-variant); animation: fadeIn 0.3s ease-in-out; }
+.changelog-content ul { margin: 0; padding-left: 20px; }
+.changelog-content li { margin-bottom: 5px; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Buttons */
+.card-actions { display: flex; gap: 10px; margin-top: 25px; }
+.btn-download { flex: 2; text-align: center; background-color: var(--md-primary); color: var(--md-on-primary); text-decoration: none; padding: 12px 15px; border-radius: var(--radius-pill); font-weight: 500; transition: opacity 0.2s; }
+.btn-download:hover { opacity: 0.9; }
+.btn-share { flex: 1; background-color: transparent; color: var(--md-primary); border: 1px solid var(--md-outline); border-radius: var(--radius-pill); cursor: pointer; font-weight: 500; transition: all 0.2s; }
+.btn-share:hover { background-color: var(--md-surface-variant); }
+
+/* Toast Notification (Android style) */
+.toast { visibility: hidden; min-width: 250px; background-color: #323232; color: #fff; text-align: center; border-radius: var(--radius-pill); padding: 16px; position: fixed; z-index: 2000; left: 50%; bottom: 30px; font-size: 0.95rem; transform: translateX(-50%); box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+.toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+@keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+@keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+
+/* Modal Window (Popup) */
+.modal-overlay { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); animation: fadeIn 0.3s; }
+.modal-content { background-color: var(--md-surface); margin: 15% auto; padding: 24px; border-radius: var(--radius-card); width: 80%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.modal-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--md-outline); padding-bottom: 10px; margin-bottom: 15px; }
+.modal-header h2 { margin: 0; font-size: 1.5rem; color: var(--md-text); }
+.close-btn { background: none; border: none; font-size: 1.5rem; color: var(--md-text-variant); cursor: pointer; }
+.modal-body p { margin-top: 0; color: #B3261E; }
+body.dark-mode .modal-body p { color: #F2B8B5; }
+.modal-body ol { padding-left: 20px; color: var(--md-text); }
+.modal-body li { margin-bottom: 10px; }
+
+/* --- KODE BARU: Desain Wadah Load More --- */
+.load-more-container {
+    text-align: center;
+    margin-bottom: 40px; /* Jarak agar tidak menabrak footer */
+}
+
+/* Sedikit efek putar saat tombol disentuh */
+.load-more-container .btn-action i {
+    transition: transform 0.4s ease;
+}
+.load-more-container .btn-action:hover i {
+    transform: rotate(180deg);
+}
+
+footer { background-color: transparent; color: var(--md-text-variant); text-align: center; padding: 40px 20px; margin-top: 50px; }
+.disclaimer { color: #B3261E; font-size: 0.85rem; margin-bottom: 15px; }
+body.dark-mode .disclaimer { color: #F2B8B5; }
+.no-results { text-align: center; padding: 50px 20px; color: var(--md-text-variant); font-size: 1.2rem; grid-column: 1 / -1; }
+#btnScrollTop { position: fixed; bottom: 30px; right: 30px; background-color: var(--md-primary-container); color: var(--md-on-primary-container); border: none; border-radius: 16px; width: 56px; height: 56px; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.1); opacity: 0; pointer-events: none; transition: all 0.3s cubic-bezier(0.2, 0, 0, 1); z-index: 1000; }
+#btnScrollTop.show { opacity: 1; pointer-events: auto; }
+#btnScrollTop:hover { filter: brightness(0.95); transform: translateY(-3px); }
+
+/* --- GAYA UNTUK IKON SOSIAL MEDIA (FOOTER) --- */
+.social-links { margin-top: 20px; }
+.social-links a { 
+    text-decoration: none; 
+    margin: 0 15px; 
+    font-size: 1.1rem; 
+    font-weight: bold; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    color: var(--md-text-variant); 
+    transition: color 0.3s, transform 0.3s; 
+}
+.social-links a:hover { transform: scale(1.1); }
+
+/* Warna Asli */
+.icon-telegram { color: #24A1DE; }
+.icon-github { color: #24292e; }
+
+/* Menyesuaikan GitHub di Mode Gelap */
+body.dark-mode .icon-github { color: #ffffff; }
+
+/* --- KODE BARU: Animasi Loading Spinner --- */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--md-surface-variant);
+    border-top: 4px solid var(--md-primary); /* Warna utama yang berputar */
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Tambahan: Efek halus saat tombol Load More menghilang/muncul */
+#loadMoreBtn {
+    transition: all 0.3s ease;
+}
+
+/* --- KODE BARU: Desain Profil Developer --- */
+.text-center { text-align: center; }
+
+.dev-avatar { 
+    width: 100px; 
+    height: 100px; 
+    border-radius: 50%; /* Membuat gambar jadi bulat sempurna */
+    border: 4px solid var(--md-primary); 
+    margin-bottom: 15px; 
+    object-fit: cover; 
+    padding: 5px;
+}
+
+.dev-name { 
+    margin: 0; 
+    color: var(--md-text); 
+    font-size: 1.6rem; 
+}
+
+.dev-role { 
+    color: var(--md-primary); 
+    font-weight: bold; 
+    margin-top: 5px; 
+    font-size: 0.95rem; 
+}
+
+.dev-bio { 
+    color: var(--md-text-variant); 
+    font-size: 0.95rem; 
+    line-height: 1.6; 
+    margin: 15px 0; 
+}
+
+.dev-skills { 
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    flex-wrap: wrap; 
+    margin-top: 20px; 
+}
+
+.skill-badge { 
+    background-color: var(--md-primary-container); 
+    color: var(--md-on-primary-container); 
+    padding: 6px 14px; 
+    border-radius: var(--radius-pill); 
+    font-size: 0.8rem; 
+    font-weight: bold; 
+}
+
+/* Warna icon About di footer */
+.icon-about { color: var(--md-primary); }
+
+/* --- KODE BARU 1: Skeleton Loading Animation --- */
+.skeleton-card {
+    background-color: var(--md-surface);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.skeleton-line {
+    background: linear-gradient(90deg, var(--md-surface-variant) 25%, var(--md-surface) 50%, var(--md-surface-variant) 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: 8px;
+}
+.skeleton-badge { width: 60px; height: 24px; border-radius: 8px; }
+.skeleton-title { width: 70%; height: 30px; }
+.skeleton-text { width: 100%; height: 16px; }
+.skeleton-text.short { width: 50%; }
+
+@keyframes skeletonShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* --- KODE BARU 2: Desain Lencana Spesifikasi ROM --- */
+.spec-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+.spec-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.spec-green { background-color: #C4EED0; color: #072711; }
+.spec-red { background-color: #F9DEDC; color: #410E0B; }
+.spec-grey { background-color: #E0E0E0; color: #424242; }
+body.dark-mode .spec-green { background-color: #0F5223; color: #C4EED0; }
+body.dark-mode .spec-red { background-color: #8C1D18; color: #F9DEDC; }
+body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
+
+/* --- KODE BARU 3: Tombol Melayang Komunitas (Kiri Bawah) --- */
+.fab-community {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    width: 56px;
+    height: 56px;
+    border-radius: 16px; /* Bentuk squircle Material You */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    z-index: 1000;
+}
+.fab-community:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: brightness(1.1);
+}
