@@ -370,3 +370,25 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     transform: translateY(-5px) scale(1.05);
     filter: brightness(1.1);
 }
+
+.comments-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--md-surface);
+    border-radius: var(--radius-card);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.comments-container h2 {
+    color: var(--md-text);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.comments-container p {
+    color: var(--md-text-variant);
+    margin-bottom: 30px;
+}
