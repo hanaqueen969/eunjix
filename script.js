@@ -109,8 +109,12 @@ function renderCards() {
         // Card HTML Builder
         let cardHTML = ` 
             <div class="card" id="${rom.md5}"> 
-                <span class="badge ${badgeClass}">${rom.type}</span> 
-                <h2 title="${rom.name}">
+                <span class="badge ${badgeClass}">${rom.type}</span>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-top: 5px;">
+                    <h2 title="${rom.name}" style="margin-top: 0; flex: 1;">${rom.name}</h2> 
+                    <i class="fa-solid fa-share-nodes action-text" style="font-size: 1.2rem; padding-top: 2px;" onclick="copyCardLink('${rom.md5}')" title="Share direct link to this ROM"></i>
+                </div>
+                <div class="spec-container"> 
                     ${rom.name} 
                     <i class="fa-solid fa-share-nodes action-text" style="font-size: 0.9rem; margin-left: 10px;" onclick="copyCardLink('${rom.md5}')" title="Share direct link to this ROM"></i>
                 </h2> 
