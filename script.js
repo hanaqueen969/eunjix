@@ -76,6 +76,22 @@ function renderCards() {
             changelogList = "<li>No changelog available.</li>";
         }
 
+        let finalDownloadLink = rom.downloadLink;
+        let excludeKeywords = ["eunjix.vercel.app", "t.me", "github.com", "sociabuzz.com", "pling.com", "sourceforge.net"];
+        let shouldMonetize = true;
+
+        for (let k = 0; k < excludeKeywords.length; k++) {
+            if (finalDownloadLink.includes(excludeKeywords[k])) {
+                shouldMonetize = false;
+                break;
+            }
+        }
+
+        if (shouldMonetize && finalDownloadLink !== "#") {
+            let encodedUrl = encodeURIComponent(finalDownloadLink);
+            finalDownloadLink = `https://sfl.gl/st?api=3ad571faff74debf487ee1375380cb041c3f4010&url=${encodedUrl}`;
+        }
+
         let cardHTML = `
             <div class="card">
                 <span class="badge ${badgeClass}">${rom.type}</span>
@@ -105,7 +121,7 @@ function renderCards() {
                 </div>
                 
                 <div class="card-actions">
-                    <a href="${rom.downloadLink}" target="_blank" class="btn-download">⬇️ Download</a>
+                    <a href="${finalDownloadLink}" target="_blank" class="btn-download">⬇️ Download</a>
                     <button class="btn-share" onclick="copyLink('${rom.downloadLink}')">🔗 Copy Link</button>
                 </div>
             </div>
@@ -116,7 +132,6 @@ function renderCards() {
     currentlyDisplayed += dataToRender.length;
     if (currentlyDisplayed < filteredData.length) { loadMoreBtn.style.display = "block"; } 
     else { loadMoreBtn.style.display = "none"; }
-    applySafeLink();
 }
 
 function loadMore() {
@@ -265,15 +280,3 @@ function typeWriterEffect() {
 }
 
 setTimeout(typeWriterEffect, 500); 
-
-function applySafeLink() {
-    let oldScript = document.getElementById("safelink-script");
-    if (oldScript) {
-        oldScript.remove();
-    }
-    
-    let script = document.createElement("script");
-    script.id = "safelink-script";
-    script.src = "//safelinku.com/js/web-script.js";
-    document.body.appendChild(script);
-}
