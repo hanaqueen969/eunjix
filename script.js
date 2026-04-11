@@ -7,6 +7,7 @@ let activeCategory = "All";
 let activeSort = "name-asc"; 
 const itemsPerPage = 6; 
 let currentlyDisplayed = 0; 
+let initialLoad = true;
 
 // ==========================================
 // 2. DATA FETCHING & RENDERING
@@ -107,10 +108,13 @@ function renderCards() {
         
         // Card HTML Builder
         let cardHTML = ` 
-            <div class="card"> 
+            <div class="card" id="${rom.md5}"> 
                 <span class="badge ${badgeClass}">${rom.type}</span> 
-                <h2 title="${rom.name}">${rom.name}</h2> 
-                <div class="spec-container"> 
+                <h2 title="${rom.name}">
+                    ${rom.name} 
+                    <i class="fa-solid fa-share-nodes action-text" style="font-size: 0.9rem; margin-left: 10px;" onclick="copyCardLink('${rom.md5}')" title="Share direct link to this ROM"></i>
+                </h2> 
+                <div class="spec-container">
                     ${gappsHtml} 
                     ${safetyHtml} 
                 </div> 
@@ -191,6 +195,13 @@ function copyLink(url) {
         showToast("✅ Download Link Copied!"); 
     }); 
 } 
+
+function copyCardLink(hashId) {
+    let cardUrl = window.location.origin + window.location.pathname + '#' + hashId;
+    navigator.clipboard.writeText(cardUrl).then(function() {
+        showToast("✅ Direct Card Link Copied!");
+    });
+}
 
 function toggleChangelog(buttonElement) { 
     let contentBox = buttonElement.parentElement.nextElementSibling; 
@@ -277,8 +288,32 @@ function runFilter() {
         } 
     }); 
     
-    currentlyDisplayed = 0; 
-    document.getElementById("romContainer").innerHTML = ""; 
+    if (initialLoad && window.location.hash) {
+        let hash = window.location.hash.substring(1);
+        let targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
+        
+        if (targetIndex !== -1) {
+            while (currentlyDisplayed <= targetIndex) {
+                renderCards();
+            }
+
+            setTimeout(() => {
+                let targetCard = document.getElementById(hash);
+                if (targetCard) {
+                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    targetCard.style.transition = "box-shadow 0.5s ease";
+                    targetCard.style.boxShadow = "0 0 25px var(--md-primary)";
+
+                    setTimeout(() => { targetCard.style.boxShadow = "none"; }, 3000); 
+                }
+            }, 800);
+            
+            initialLoad = false;
+            return;
+        }
+    }
+    
+    initialLoad = false;
     renderCards(); 
 } 
 
