@@ -392,3 +392,33 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     color: var(--md-text-variant);
     margin-bottom: 30px;
 }
+
+.ad-container {
+    text-align: center;
+    margin: 20px auto 30px;
+    max-width: 800px;
+    padding: 10px;
+    background-color: transparent;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ad-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--md-outline);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.ad-container iframe,
+.ad-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
