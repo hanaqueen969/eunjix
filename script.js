@@ -122,7 +122,7 @@ function renderCards() {
                 
                 <div class="card-actions">
                     <a href="${finalDownloadLink}" target="_blank" class="btn-download">⬇️ Download</a>
-                    <button class="btn-share" onclick="copyLink('${rom.downloadLink}')">🔗 Copy Link</button>
+                    <button class="btn-share" onclick="copyLink('${finalDownloadLink}')">🔗 Copy Link</button>
                 </div>
             </div>
         `;
