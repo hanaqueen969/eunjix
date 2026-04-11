@@ -116,6 +116,7 @@ function renderCards() {
     currentlyDisplayed += dataToRender.length;
     if (currentlyDisplayed < filteredData.length) { loadMoreBtn.style.display = "block"; } 
     else { loadMoreBtn.style.display = "none"; }
+    applySafeLink();
 }
 
 function loadMore() {
@@ -264,3 +265,15 @@ function typeWriterEffect() {
 }
 
 setTimeout(typeWriterEffect, 500); 
+
+function applySafeLink() {
+    let oldScript = document.getElementById("safelink-script");
+    if (oldScript) {
+        oldScript.remove();
+    }
+    
+    let script = document.createElement("script");
+    script.id = "safelink-script";
+    script.src = "//safelinku.com/js/web-script.js";
+    document.body.appendChild(script);
+}
