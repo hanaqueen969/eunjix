@@ -269,7 +269,7 @@ function parseSize(sizeStr) {
 
 function runFilter() { 
     let input = document.getElementById("searchInput").value.toLowerCase(); 
-    
+
     filteredData = romData.filter(function(rom) { 
         let textMatch = rom.name.toLowerCase().includes(input) || 
                         rom.device.toLowerCase().includes(input) || 
@@ -277,7 +277,7 @@ function runFilter() {
         let categoryMatch = (activeCategory === "All") || (rom.type === activeCategory); 
         return textMatch && categoryMatch; 
     }); 
-    
+
     filteredData.sort(function(a, b) { 
         if (activeSort === "name-asc") { 
             return a.name.localeCompare(b.name); 
@@ -287,9 +287,12 @@ function runFilter() {
             return parseSize(b.size) - parseSize(a.size); 
         } 
     }); 
-    
+
+    currentlyDisplayed = 0; 
+    document.getElementById("romContainer").innerHTML = "";
+
     if (initialLoad && window.location.hash) {
-        let hash = window.location.hash.substring(1);
+        let hash = window.location.hash.substring(1); 
         let targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
         
         if (targetIndex !== -1) {
@@ -303,19 +306,19 @@ function runFilter() {
                     targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     targetCard.style.transition = "box-shadow 0.5s ease";
                     targetCard.style.boxShadow = "0 0 25px var(--md-primary)";
-
+                    
                     setTimeout(() => { targetCard.style.boxShadow = "none"; }, 3000); 
                 }
-            }, 800);
+            }, 800); 
             
             initialLoad = false;
             return;
         }
     }
-    
+
     initialLoad = false;
     renderCards(); 
-} 
+}
 
 // ==========================================
 // 6. THEME & SCROLL
