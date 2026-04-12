@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eunjix-cache-v16';
+const CACHE_NAME = 'eunjix-cache-v17';
 
 const urlsToCache = [
     '/',
@@ -10,7 +10,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', function(event) {
-    self.skipWaiting(); // Memaksa update cache secepatnya
+    self.skipWaiting();
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(function(cache) {
