@@ -37,10 +37,12 @@ body {
 
 header {
     background-color: transparent;
-    color: var(--md-text);
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 20px; /* Jarak dari atas layar */
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-title {
@@ -50,10 +52,36 @@ header {
     gap: 15px;
 }
 
+body.dark-mode .header-card {
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+
+.header-card {
+    background-color: var(--md-surface);
+    color: var(--md-text);
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 15px;
+    padding: 35px 25px;
+    border-radius: var(--radius-card);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.header-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
 header h1 {
     margin: 0;
     font-size: 2.8rem;
     font-weight: 700;
+    /* Efek Gradien Teks Tetap Dipertahankan karena Keren */
     background: linear-gradient(to right, var(--md-primary), #00c6ff, #ff007f, var(--md-primary));
     background-size: 300% 100%;
     -webkit-background-clip: text;
@@ -72,17 +100,15 @@ header p {
 }
 
 .subtitle {
-    margin-top: 10px;
+    margin: 0;
     color: var(--md-text-variant);
     min-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .cursor {
-    display: inline-block;
-    width: 2px;
-    background-color: var(--md-primary);
-    animation: blink 1s step-end infinite;
-    margin-left: 2px;
+    color: var(--md-primary);
 }
 
 @keyframes blink {
