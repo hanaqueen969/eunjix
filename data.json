@@ -1,15 +1,53 @@
 [
     {
-        "name": "Matrixx-v12.2-Aurora-UNOFFICIAL",
+        "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X01BD-Vanilla",
+        "device": "Asus Zenfone Max Pro M2 (X01BD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.5 GB",
+        "downloadLink": "#",
+        "md5": "2fea711fecc253569459a2c91fb61ab5",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source side",
+            "Switch to common light hal",
+            "Optimize thermal vadc",
+            "Increase watermark_scale_factor",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X00TD-Gapps",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "2.1 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1rqiqHATNX6jHB4MNNgDnZbJUMqnUj9rF&export=download",
+        "md5": "c609f9d4ba35ac145c045c15c414122f",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source side",
+            "Switch to common light hal",
+            "Optimize thermal vadc",
+            "Increase watermark_scale_factor",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X00TD-Vanilla",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
         "maintainer": "EunjiX",
         "size": "1.5 GB",
-        "downloadLink": "https://drive.google.com/uc?id=1nQV0fZhMsgXJEEYimBEGwj3q7R5lUeKV&export=download",
-        "md5": "adee83725baa5b3ed2690062960fca4b",
+        "downloadLink": "https://drive.google.com/uc?id=1rqGEPumxD0MRvmITIY7fj_aXkXaYTG95&export=download",
+        "md5": "22ae62b2f98a1e8d05765223426c5dd1",
         "gapps": false,
-        "safetynet": true,
+        "safetynet": false,
         "changelog": [
             "Sync with latest source side",
             "Switch to common light hal",
