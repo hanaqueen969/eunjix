@@ -293,11 +293,15 @@ function runFilter() {
             return parseSize(b.size) - parseSize(a.size);
         }
     });
-    
+
+    const totalRomElement = document.getElementById("stat-total");
+    if (totalRomElement) {
+        totalRomElement.innerText = romData.length;
+    }
+
     currentlyDisplayed = 0;
     document.getElementById("romContainer").innerHTML = "";
-    
-    // KODE BARU: Pelindung Try-Catch agar web tidak blank jika link rusak
+
     try {
         if (initialLoad && window.location.hash) {
             // Decode URI berjaga-jaga jika WhatsApp/Telegram menambahkan karakter aneh
