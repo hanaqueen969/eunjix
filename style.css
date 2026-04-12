@@ -16,6 +16,14 @@
     --radius-pill: 50px;
 }
 
+/* Mendaftarkan Font Custom "Eastroman" ke Website */
+@font-face {
+    font-family: 'Eastroman';
+    src: url('EastmanRomanTrial-Italic.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body.dark-mode {
     --md-bg: #141218;
     --md-surface: #211F26;
@@ -113,8 +121,11 @@ body.dark-mode .header-card-gradient {
     margin: 0;
     color: rgba(255, 255, 255, 0.85);
     min-height: 24px;
-    font-size: 1rem;
+    /* GANTI FONT DISINI: Memanggil font Eastroman */
+    font-family: 'Eastroman', 'Roboto', cursive; 
+    font-size: 1.3rem; /* Saya besarkan sedikit karena font custom biasanya terlihat lebih kecil */
     line-height: 1.5;
+    letter-spacing: 1px; /* Memberi sedikit jarak antar huruf agar terlihat elegan */
 }
 
 .cursor {
