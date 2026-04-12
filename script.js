@@ -294,11 +294,6 @@ function runFilter() {
         }
     });
 
-    const totalRomElement = document.getElementById("stat-total");
-    if (totalRomElement) {
-        totalRomElement.innerText = romData.length;
-    }
-
     currentlyDisplayed = 0;
     document.getElementById("romContainer").innerHTML = "";
 
