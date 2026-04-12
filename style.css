@@ -38,22 +38,11 @@ body {
 header {
     background-color: transparent;
     text-align: center;
-    padding: 20px; /* Jarak dari atas layar */
+    padding: 20px;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.header-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-}
-
-body.dark-mode .header-card {
-    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
 }
 
 .header-card {
@@ -69,6 +58,10 @@ body.dark-mode .header-card {
     box-sizing: border-box;
 }
 
+body.dark-mode .header-card {
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+}
+
 .header-title {
     display: flex;
     justify-content: center;
@@ -81,7 +74,6 @@ header h1 {
     margin: 0;
     font-size: 2.8rem;
     font-weight: 700;
-    /* Efek Gradien Teks Tetap Dipertahankan karena Keren */
     background: linear-gradient(to right, var(--md-primary), #00c6ff, #ff007f, var(--md-primary));
     background-size: 300% 100%;
     -webkit-background-clip: text;
@@ -109,6 +101,7 @@ header p {
 
 .cursor {
     color: var(--md-primary);
+    animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
@@ -858,59 +851,4 @@ body.dark-mode .spec-grey {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-}
-
-.quick-settings-container {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin: 20px auto;
-    flex-wrap: wrap;
-    padding: 0 20px;
-}
-
-.qs-tile {
-    background-color: var(--md-surface-variant);
-    color: var(--md-text);
-    padding: 12px 18px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 140px;
-    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    cursor: default;
-}
-
-.qs-tile.active {
-    background-color: var(--md-primary-container);
-    color: var(--md-on-primary-container);
-}
-
-.qs-icon {
-    font-size: 1.2rem;
-    opacity: 0.9;
-}
-
-.qs-info {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.qs-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    opacity: 0.8;
-}
-
-.qs-value {
-    font-size: 0.9rem;
-    font-weight: bold;
-}
-
-/* Hover Effect */
-.qs-tile:hover {
-    transform: scale(1.02);
-    filter: brightness(1.05);
 }
