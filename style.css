@@ -16,14 +16,6 @@
     --radius-pill: 50px;
 }
 
-/* Mendaftarkan Font Custom "Eastroman" ke Website */
-@font-face {
-    font-family: 'Eastroman';
-    src: url('EastmanRomanTrial-Italic.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 body.dark-mode {
     --md-bg: #141218;
     --md-surface: #211F26;
@@ -63,6 +55,8 @@ header {
 }
 
 .header-card-gradient {
+/* Wadah Kartu Utama dengan Gradien GAHAR (Diperbesar agar lega) */
+.header-card-gradient {
     background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
     background-size: 300% 100%;
     animation: gradientWalk 6s infinite linear;
@@ -70,7 +64,7 @@ header {
     max-width: 800px;
     width: 100%;
     margin: 0 auto 15px;
-    padding: 35px 25px;
+    padding: 50px 30px; /* PADDING DIBESARKAN: Kartu jadi lebih tinggi dan gagah */
     border-radius: var(--radius-card);
     box-shadow: 0 10px 30px rgba(103, 80, 164, 0.3);
     transition: box-shadow 0.3s;
@@ -88,62 +82,57 @@ body.dark-mode .header-card-gradient {
     100% { background-position: 100% 50%; }
 }
 
-.header-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 5px;
-}
-
-.header-h1-solid {
-    margin: 0;
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #FFFFFF;
-    -webkit-text-fill-color: initial;
-    background: none;
-}
-
+/* Menata Wadah Judul Utama */
 .header-main-title {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 5px;
+    gap: 20px; /* Jarak antar elemen dijauhkan sedikit karena ukurannya lebih besar */
+    margin-bottom: 10px; /* Jarak ke teks mesin tik */
 }
 
-.custom-title-logo {
-    height: 3rem; 
-    width: auto; 
-    vertical-align: middle; 
-    
-    animation: floatAnim 3s ease-in-out infinite; 
-    
-    animation-delay: 1.5s; 
+/* Judul H1 (Diperbesar drastis) */
+.header-h1-solid {
+    margin: 0;
+    font-size: 3.8rem; /* DIBESARKAN dari 2.8rem */
+    font-weight: 700;
+    color: #FFFFFF;
+    -webkit-text-fill-color: initial;
+    background: none;
+    letter-spacing: 2px; /* Sedikit spasi antar huruf agar lebih elegan */
 }
 
+/* Logo Kiri (Diperbesar) */
 .logo {
-    width: 60px;
+    width: 80px; /* DIBESARKAN dari 60px */
     height: auto;
     animation: floatAnim 3s ease-in-out infinite;
 }
 
+/* Logo Kanan (Diperbesar menyesuaikan ukuran H1 yang baru) */
+.custom-title-logo {
+    height: 4.5rem; /* DIBESARKAN dari 3rem */
+    width: auto;
+    vertical-align: middle;
+    animation: floatAnim 3s ease-in-out infinite;
+    animation-delay: 1.5s; /* Tetap bergerak selang-seling */
+}
+
 @keyframes floatAnim {
     0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); } /* Ayunan ditambah sedikit agar pas dengan ukuran besar */
     100% { transform: translateY(0px); }
 }
 
+/* Subtitle Mesin Tik (Dikecilkan & Kembali ke Roboto Asli) */
 .subtitle {
     margin: 0;
     color: rgba(255, 255, 255, 0.85);
     min-height: 24px;
-    /* GANTI FONT DISINI: Memanggil font Eastroman */
-    font-family: 'Eastroman', 'Roboto', cursive; 
-    font-size: 1.1rem; /* Saya besarkan sedikit karena font custom biasanya terlihat lebih kecil */
+    font-family: 'Roboto', sans-serif; /* Kembali ke font bawaan yang bersih */
+    font-size: 0.90rem; /* DIKECILKAN agar tidak mencuri fokus dari judul utama */
     line-height: 1.5;
-    letter-spacing: 1px; /* Memberi sedikit jarak antar huruf agar terlihat elegan */
+    font-weight: 400;
 }
 
 .cursor {
