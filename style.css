@@ -1,3 +1,6 @@
+/* ==========================================
+   1. VARIABEL WARNA (MATERIAL YOU)
+   ========================================== */
 :root {
     --md-bg: #FEF7FF;
     --md-surface: #F3EDF7;
@@ -26,6 +29,9 @@ body.dark-mode {
     --md-outline: #938F99;
 }
 
+/* ==========================================
+   2. DASAR WEBSITE (BODY)
+   ========================================== */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--md-bg);
@@ -35,6 +41,9 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* ==========================================
+   3. HEADER & KARTU KOSMIK
+   ========================================== */
 header {
     background-color: transparent;
     text-align: center;
@@ -45,21 +54,30 @@ header {
     align-items: center;
 }
 
-.header-card {
-    background-color: var(--md-surface);
-    color: var(--md-text);
+.header-card-gradient {
+    background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
+    background-size: 300% 100%;
+    animation: gradientWalk 6s infinite linear;
+    color: #FFFFFF;
     max-width: 800px;
     width: 100%;
     margin: 0 auto 15px;
     padding: 35px 25px;
     border-radius: var(--radius-card);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(103, 80, 164, 0.3);
+    transition: box-shadow 0.3s;
     box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
 }
 
-body.dark-mode .header-card {
-    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+body.dark-mode .header-card-gradient {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+@keyframes gradientWalk {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
 }
 
 .header-title {
@@ -70,47 +88,13 @@ body.dark-mode .header-card {
     margin-bottom: 5px;
 }
 
-header h1 {
+.header-h1-solid {
     margin: 0;
     font-size: 2.8rem;
     font-weight: 700;
-    background: linear-gradient(to right, var(--md-primary), #00c6ff, #ff007f, var(--md-primary));
-    background-size: 300% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientWalk 6s infinite linear;
-}
-
-@keyframes gradientWalk {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-
-header p {
-    margin-top: 10px;
-    color: var(--md-text-variant);
-}
-
-.subtitle {
-    margin: 0;
-    color: var(--md-text-variant);
-    min-height: 24px;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.cursor {
-    color: var(--md-primary);
-    animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-body.dark-mode .logo {
-    filter: invert(100%);
+    color: #FFFFFF;
+    -webkit-text-fill-color: initial;
+    background: none;
 }
 
 .logo {
@@ -125,6 +109,27 @@ body.dark-mode .logo {
     100% { transform: translateY(0px); }
 }
 
+.subtitle {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    min-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.cursor {
+    color: #FFFFFF;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ==========================================
+   4. TOMBOL AKSI & DONASI
+   ========================================== */
 .header-actions {
     display: flex;
     justify-content: center;
@@ -146,6 +151,57 @@ body.dark-mode .logo {
 
 .btn-action:hover {
     filter: brightness(0.95);
+}
+
+.btn-donate {
+    background-color: #FFD54F;
+    color: #4E342E;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    animation: detakJantung 2s infinite;
+}
+
+.btn-donate:hover {
+    background-color: #FFCA28;
+    color: #3E2723;
+    animation: none;
+    transform: scale(1.05);
+}
+
+body.dark-mode .btn-donate {
+    background-color: #F6B26B;
+    color: #121212;
+}
+
+@keyframes detakJantung {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0.7); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 213, 79, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0); }
+}
+
+/* ==========================================
+   5. BANNER & PENCARIAN
+   ========================================== */
+.disclaimer-banner {
+    max-width: 650px;
+    margin: 30px auto 0;
+    padding: 12px 20px;
+    background-color: #F9DEDC;
+    color: #410E0B;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.disclaimer-banner p { margin: 0; }
+
+body.dark-mode .disclaimer-banner {
+    background-color: #8C1D18;
+    color: #F9DEDC;
 }
 
 .search-container {
@@ -170,56 +226,6 @@ body.dark-mode .logo {
 
 .search-container input:focus {
     box-shadow: 0 0 0 2px var(--md-primary);
-}
-
-.btn-donate {
-    background-color: #FFD54F;
-    color: #4E342E;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    animation: detakJantung 2s infinite;
-}
-
-.btn-donate:hover {
-    background-color: #FFCA28;
-    color: #3E2723;
-    animation: none;
-    transform: scale(1.05);
-}
-
-@keyframes detakJantung {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0.7); }
-    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(255, 213, 79, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 213, 79, 0); }
-}
-
-body.dark-mode .btn-donate {
-    background-color: #F6B26B;
-    color: #121212;
-}
-
-.disclaimer-banner {
-    max-width: 650px;
-    margin: 30px auto 0;
-    padding: 12px 20px;
-    background-color: #F9DEDC;
-    color: #410E0B;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.disclaimer-banner p {
-    margin: 0;
-}
-
-body.dark-mode .disclaimer-banner {
-    background-color: #8C1D18;
-    color: #F9DEDC;
 }
 
 .filter-sort-wrapper {
@@ -267,6 +273,9 @@ body.dark-mode .disclaimer-banner {
     cursor: pointer;
 }
 
+/* ==========================================
+   6. KARTU ROM & KERNEL
+   ========================================== */
 .container {
     max-width: 1000px;
     margin: 20px auto 40px;
@@ -309,25 +318,36 @@ body.dark-mode .disclaimer-banner {
     margin-bottom: 10px;
 }
 
-.badge-rom {
-    background-color: #C4EED0;
-    color: #072711;
+.badge-rom { background-color: #C4EED0; color: #072711; }
+.badge-kernel { background-color: #FFDCC3; color: #2E1500; }
+
+body.dark-mode .badge-rom { background-color: #0F5223; color: #C4EED0; }
+body.dark-mode .badge-kernel { background-color: #5C2700; color: #FFDCC3; }
+
+.spec-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-.badge-kernel {
-    background-color: #FFDCC3;
-    color: #2E1500;
+.spec-badge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
 }
 
-body.dark-mode .badge-rom {
-    background-color: #0F5223;
-    color: #C4EED0;
-}
+.spec-green { background-color: #C4EED0; color: #072711; }
+.spec-red { background-color: #F9DEDC; color: #410E0B; }
+.spec-grey { background-color: #E0E0E0; color: #424242; }
 
-body.dark-mode .badge-kernel {
-    background-color: #5C2700;
-    color: #FFDCC3;
-}
+body.dark-mode .spec-green { background-color: #0F5223; color: #C4EED0; }
+body.dark-mode .spec-red { background-color: #8C1D18; color: #F9DEDC; }
+body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
 
 .detail-item {
     display: flex;
@@ -352,9 +372,7 @@ body.dark-mode .badge-kernel {
     user-select: none;
 }
 
-.action-text:hover {
-    text-decoration: underline;
-}
+.action-text:hover { text-decoration: underline; }
 
 .changelog-content {
     display: none;
@@ -367,14 +385,8 @@ body.dark-mode .badge-kernel {
     animation: fadeIn 0.3s ease-in-out;
 }
 
-.changelog-content ul {
-    margin: 0;
-    padding-left: 20px;
-}
-
-.changelog-content li {
-    margin-bottom: 5px;
-}
+.changelog-content ul { margin: 0; padding-left: 20px; }
+.changelog-content li { margin-bottom: 5px; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
@@ -399,9 +411,7 @@ body.dark-mode .badge-kernel {
     transition: opacity 0.2s;
 }
 
-.btn-download:hover {
-    opacity: 0.9;
-}
+.btn-download:hover { opacity: 0.9; }
 
 .btn-share {
     flex: 1;
@@ -414,10 +424,72 @@ body.dark-mode .badge-kernel {
     transition: all 0.2s;
 }
 
-.btn-share:hover {
-    background-color: var(--md-surface-variant);
+.btn-share:hover { background-color: var(--md-surface-variant); }
+
+.no-results {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--md-text-variant);
+    font-size: 1.2rem;
+    grid-column: 1 / -1;
 }
 
+/* ==========================================
+   7. SKELETON LOADING & SPINNER
+   ========================================== */
+.skeleton-card {
+    background-color: var(--md-surface);
+    border-radius: var(--radius-card);
+    padding: 24px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.skeleton-line {
+    background: linear-gradient(90deg, var(--md-surface-variant) 25%, var(--md-surface) 50%, var(--md-surface-variant) 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: 8px;
+}
+
+.skeleton-badge { width: 60px; height: 24px; border-radius: 8px; }
+.skeleton-title { width: 70%; height: 30px; }
+.skeleton-text { width: 100%; height: 16px; }
+.skeleton-text.short { width: 50%; }
+
+@keyframes skeletonShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.load-more-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.load-more-container .btn-action i { transition: transform 0.4s ease; }
+.load-more-container .btn-action:hover i { transform: rotate(180deg); }
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--md-surface-variant);
+    border-top: 4px solid var(--md-primary);
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ==========================================
+   8. NOTIFIKASI & POPUP MODAL
+   ========================================== */
 .toast {
     visibility: hidden;
     min-width: 250px;
@@ -482,11 +554,7 @@ body.dark-mode .badge-kernel {
     margin-bottom: 15px;
 }
 
-.modal-header h2 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: var(--md-text);
-}
+.modal-header h2 { margin: 0; font-size: 1.5rem; color: var(--md-text); }
 
 .close-btn {
     background: none;
@@ -496,146 +564,13 @@ body.dark-mode .badge-kernel {
     cursor: pointer;
 }
 
-.modal-body p {
-    margin-top: 0;
-    color: #B3261E;
-}
+.modal-body p { margin-top: 0; color: #B3261E; }
+body.dark-mode .modal-body p { color: #F2B8B5; }
+.modal-body ol { padding-left: 20px; color: var(--md-text); }
+.modal-body li { margin-bottom: 10px; }
 
-body.dark-mode .modal-body p {
-    color: #F2B8B5;
-}
-
-.modal-body ol {
-    padding-left: 20px;
-    color: var(--md-text);
-}
-
-.modal-body li {
-    margin-bottom: 10px;
-}
-
-.load-more-container {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.load-more-container .btn-action i {
-    transition: transform 0.4s ease;
-}
-
-.load-more-container .btn-action:hover i {
-    transform: rotate(180deg);
-}
-
-footer {
-    background-color: transparent;
-    color: var(--md-text-variant);
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 50px;
-}
-
-.disclaimer {
-    color: #B3261E;
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-}
-
-body.dark-mode .disclaimer {
-    color: #F2B8B5;
-}
-
-.no-results {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--md-text-variant);
-    font-size: 1.2rem;
-    grid-column: 1 / -1;
-}
-
-#btnScrollTop {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--md-primary-container);
-    color: var(--md-on-primary-container);
-    border: none;
-    border-radius: 16px;
-    width: 56px;
-    height: 56px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    z-index: 1000;
-}
-
-#btnScrollTop.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-#btnScrollTop:hover {
-    filter: brightness(0.95);
-    transform: translateY(-3px);
-}
-
-.social-links {
-    margin-top: 20px;
-}
-
-.social-links a {
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--md-text-variant);
-    transition: color 0.3s, transform 0.3s;
-}
-
-.social-links a:hover {
-    transform: scale(1.1);
-}
-
-.icon-telegram {
-    color: #24A1DE;
-}
-
-.icon-github {
-    color: #24292e;
-}
-
-body.dark-mode .icon-github {
-    color: #ffffff;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid var(--md-surface-variant);
-    border-top: 4px solid var(--md-primary);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-#loadMoreBtn {
-    transition: all 0.3s ease;
-}
-
-.text-center {
-    text-align: center;
-}
+/* Profil Developer Modal */
+.text-center { text-align: center; }
 
 .dev-avatar {
     width: 100px;
@@ -647,25 +582,9 @@ body.dark-mode .icon-github {
     padding: 5px;
 }
 
-.dev-name {
-    margin: 0;
-    color: var(--md-text);
-    font-size: 1.6rem;
-}
-
-.dev-role {
-    color: var(--md-primary);
-    font-weight: bold;
-    margin-top: 5px;
-    font-size: 0.95rem;
-}
-
-.dev-bio {
-    color: var(--md-text-variant);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 15px 0;
-}
+.dev-name { margin: 0; color: var(--md-text); font-size: 1.6rem; }
+.dev-role { color: var(--md-primary); font-weight: bold; margin-top: 5px; font-size: 0.95rem; }
+.dev-bio { color: var(--md-text-variant); font-size: 0.95rem; line-height: 1.6; margin: 15px 0; }
 
 .dev-skills {
     display: flex;
@@ -684,145 +603,9 @@ body.dark-mode .icon-github {
     font-weight: bold;
 }
 
-.icon-about {
-    color: var(--md-primary);
-}
-
-.skeleton-card {
-    background-color: var(--md-surface);
-    border-radius: var(--radius-card);
-    padding: 24px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.skeleton-line {
-    background: linear-gradient(90deg, var(--md-surface-variant) 25%, var(--md-surface) 50%, var(--md-surface-variant) 75%);
-    background-size: 200% 100%;
-    animation: skeletonShimmer 1.5s infinite;
-    border-radius: 8px;
-}
-
-.skeleton-badge {
-    width: 60px;
-    height: 24px;
-    border-radius: 8px;
-}
-
-.skeleton-title {
-    width: 70%;
-    height: 30px;
-}
-
-.skeleton-text {
-    width: 100%;
-    height: 16px;
-}
-
-.skeleton-text.short {
-    width: 50%;
-}
-
-@keyframes skeletonShimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-.spec-container {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
-}
-
-.spec-badge {
-    font-size: 0.75rem;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.spec-green {
-    background-color: #C4EED0;
-    color: #072711;
-}
-
-.spec-red {
-    background-color: #F9DEDC;
-    color: #410E0B;
-}
-
-.spec-grey {
-    background-color: #E0E0E0;
-    color: #424242;
-}
-
-body.dark-mode .spec-green {
-    background-color: #0F5223;
-    color: #C4EED0;
-}
-
-body.dark-mode .spec-red {
-    background-color: #8C1D18;
-    color: #F9DEDC;
-}
-
-body.dark-mode .spec-grey {
-    background-color: #424242;
-    color: #E0E0E0;
-}
-
-.fab-community {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    background-color: var(--md-primary);
-    color: var(--md-on-primary);
-    width: 56px;
-    height: 56px;
-    border-radius: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-    z-index: 1000;
-}
-
-.fab-community:hover {
-    transform: translateY(-5px) scale(1.05);
-    filter: brightness(1.1);
-}
-
-.comments-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: var(--md-surface);
-    border-radius: var(--radius-card);
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.comments-container h2 {
-    color: var(--md-text);
-    font-size: 1.8rem;
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.comments-container p {
-    color: var(--md-text-variant);
-    margin-bottom: 30px;
-}
-
+/* ==========================================
+   9. IKLAN & KOMENTAR TELEGRAM
+   ========================================== */
 .ad-container {
     text-align: center;
     margin: 20px auto 30px;
@@ -851,4 +634,104 @@ body.dark-mode .spec-grey {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.comments-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--md-surface);
+    border-radius: var(--radius-card);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.comments-container h2 {
+    color: var(--md-text);
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.comments-container p {
+    color: var(--md-text-variant);
+    margin-bottom: 30px;
+}
+
+/* ==========================================
+   10. FOOTER & TOMBOL MENGAMBANG (FAB)
+   ========================================== */
+footer {
+    background-color: transparent;
+    color: var(--md-text-variant);
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}
+
+.social-links { margin-top: 20px; }
+
+.social-links a {
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--md-text-variant);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-links a:hover { transform: scale(1.1); }
+
+.icon-about { color: var(--md-primary); }
+.icon-telegram { color: #24A1DE; }
+.icon-github { color: #24292e; }
+body.dark-mode .icon-github { color: #ffffff; }
+
+#btnScrollTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border: none;
+    border-radius: 16px;
+    width: 56px;
+    height: 56px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    z-index: 1000;
+}
+
+#btnScrollTop.show { opacity: 1; pointer-events: auto; }
+#btnScrollTop:hover { filter: brightness(0.95); transform: translateY(-3px); }
+
+.fab-community {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+    z-index: 1000;
+}
+
+.fab-community:hover {
+    transform: translateY(-5px) scale(1.05);
+    filter: brightness(1.1);
 }
