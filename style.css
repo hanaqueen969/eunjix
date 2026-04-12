@@ -54,7 +54,6 @@ header {
     align-items: center;
 }
 
-.header-card-gradient {
 /* Wadah Kartu Utama dengan Gradien GAHAR (Diperbesar agar lega) */
 .header-card-gradient {
     background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
