@@ -55,11 +55,13 @@ function renderCards() {
     let endPoint = currentlyDisplayed + itemsPerPage;
     let dataToRender = filteredData.slice(currentlyDisplayed, endPoint);
 
+    // KODE BARU: Keranjang sementara agar memori HP tidak crash!
+    let tempHTML = ""; 
+
     for (let i = 0; i < dataToRender.length; i++) {
         let rom = dataToRender[i];
         let badgeClass = rom.type === "ROM" ? "badge-rom" : "badge-kernel";
 
-        // GApps Badge Logic
         let gappsHtml = "";
         if (rom.type === "ROM") {
             if (rom.gapps) {
@@ -69,7 +71,6 @@ function renderCards() {
             }
         }
 
-        // SafetyNet Badge Logic
         let safetyHtml = "";
         if (rom.type === "ROM") {
             if (rom.safetynet) {
@@ -79,7 +80,6 @@ function renderCards() {
             }
         }
 
-        // Changelog Logic
         let changelogList = "";
         if (rom.changelog && rom.changelog.length > 0) {
             for (let j = 0; j < rom.changelog.length; j++) {
@@ -89,7 +89,6 @@ function renderCards() {
             changelogList = "<li>No changelog available.</li>";
         }
 
-        // Monetization Logic (SafeLinkU)
         let finalDownloadLink = rom.downloadLink;
         let excludeKeywords = ["eunjix.vercel.app", "t.me", "github.com", "sociabuzz.com", "pling.com", "sourceforge.net"];
         let shouldMonetize = true;
@@ -106,7 +105,6 @@ function renderCards() {
             finalDownloadLink = `https://sfl.gl/st?api=3ad571faff74debf487ee1375380cb041c3f4010&url=${encodedUrl}`;
         }
 
-        // Card HTML Builder (KODE YANG SUDAH DIBERSIHKAN DARI DUPLIKAT)
         let cardHTML = `
             <div class="card" id="${rom.md5}">
                 <span class="badge ${badgeClass}">${rom.type}</span>
@@ -142,8 +140,13 @@ function renderCards() {
                 </div>
             </div>
         `;
-        container.innerHTML += cardHTML;
+        
+        // KODE BARU: Simpan di keranjang, jangan langsung ke HTML
+        tempHTML += cardHTML; 
     }
+
+    // KODE BARU: Tumpahkan semua isi keranjang ke layar sekaligus (Sangat Cepat & Aman!)
+    container.insertAdjacentHTML('beforeend', tempHTML);
 
     currentlyDisplayed += dataToRender.length;
 
@@ -294,29 +297,35 @@ function runFilter() {
     currentlyDisplayed = 0;
     document.getElementById("romContainer").innerHTML = "";
     
-    if (initialLoad && window.location.hash) {
-        let hash = window.location.hash.substring(1);
-        let targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
-        
-        if (targetIndex !== -1) {
-            while (currentlyDisplayed <= targetIndex) {
-                renderCards();
-            }
+    // KODE BARU: Pelindung Try-Catch agar web tidak blank jika link rusak
+    try {
+        if (initialLoad && window.location.hash) {
+            // Decode URI berjaga-jaga jika WhatsApp/Telegram menambahkan karakter aneh
+            let hash = decodeURIComponent(window.location.hash.substring(1));
+            let targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
             
-            setTimeout(() => {
-                let targetCard = document.getElementById(hash);
-                if (targetCard) {
-                    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    targetCard.style.transition = "box-shadow 0.5s ease";
-                    targetCard.style.boxShadow = "0 0 25px var(--md-primary)";
-                    
-                    setTimeout(() => { targetCard.style.boxShadow = "none"; }, 3000);
+            if (targetIndex !== -1) {
+                while (currentlyDisplayed <= targetIndex) {
+                    renderCards();
                 }
-            }, 800);
-            
-            initialLoad = false;
-            return;
+                
+                setTimeout(() => {
+                    let targetCard = document.getElementById(hash);
+                    if (targetCard) {
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetCard.style.transition = "box-shadow 0.5s ease";
+                        targetCard.style.boxShadow = "0 0 25px var(--md-primary)";
+                        
+                        setTimeout(() => { targetCard.style.boxShadow = "none"; }, 3000);
+                    }
+                }, 800);
+                
+                initialLoad = false;
+                return;
+            }
         }
+    } catch (error) {
+        console.error("Deep Link Error diselamatkan:", error);
     }
     
     initialLoad = false;
