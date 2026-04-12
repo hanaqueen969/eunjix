@@ -105,6 +105,24 @@ body.dark-mode .header-card-gradient {
     background: none;
 }
 
+.header-main-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.custom-title-logo {
+    height: 3rem; 
+    width: auto; 
+    vertical-align: middle; 
+    
+    animation: floatAnim 3s ease-in-out infinite; 
+    
+    animation-delay: 1.5s; 
+}
+
 .logo {
     width: 60px;
     height: auto;
@@ -123,7 +141,7 @@ body.dark-mode .header-card-gradient {
     min-height: 24px;
     /* GANTI FONT DISINI: Memanggil font Eastroman */
     font-family: 'Eastroman', 'Roboto', cursive; 
-    font-size: 1.3rem; /* Saya besarkan sedikit karena font custom biasanya terlihat lebih kecil */
+    font-size: 1.1rem; /* Saya besarkan sedikit karena font custom biasanya terlihat lebih kecil */
     line-height: 1.5;
     letter-spacing: 1px; /* Memberi sedikit jarak antar huruf agar terlihat elegan */
 }
