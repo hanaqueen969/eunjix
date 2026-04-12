@@ -6,13 +6,13 @@
         "category": "Android 16",
         "maintainer": "EunjiX",
         "size": "1.5 GB",
-        "downloadLink": "#",
+        "downloadLink": "https://drive.google.com/uc?id=1BGMwqzNys4mp9jchh6v9imnjbWQM-irz&export=download",
         "md5": "2fea711fecc253569459a2c91fb61ab5",
         "gapps": false,
         "safetynet": false,
         "changelog": [
             "Sync with latest source side",
-            "Switch to common light hal",
+            "Fix auto brightness",
             "Optimize thermal vadc",
             "Increase watermark_scale_factor",
             "Improved battery backup"
@@ -27,11 +27,11 @@
         "size": "2.1 GB",
         "downloadLink": "https://drive.google.com/uc?id=1rqiqHATNX6jHB4MNNgDnZbJUMqnUj9rF&export=download",
         "md5": "c609f9d4ba35ac145c045c15c414122f",
-        "gapps": false,
+        "gapps": true,
         "safetynet": false,
         "changelog": [
             "Sync with latest source side",
-            "Switch to common light hal",
+            "Fix auto brightness",
             "Optimize thermal vadc",
             "Increase watermark_scale_factor",
             "Improved battery backup"
@@ -50,7 +50,7 @@
         "safetynet": false,
         "changelog": [
             "Sync with latest source side",
-            "Switch to common light hal",
+            "Fix auto brightness",
             "Optimize thermal vadc",
             "Increase watermark_scale_factor",
             "Improved battery backup"
