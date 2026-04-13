@@ -72,7 +72,8 @@ const uiTranslations = {
         "noResults": "Sorry, the ROM or device you are looking for is not available. 😢",
         "errorFetch": "Sorry, failed to load data from data.json. ⚠️",
         "btnClear": '<i class="fa-solid fa-broom"></i> Cache',
-        "confirmClear": "Are you sure you want to clear the app cache and reload?"
+        "confirmClear": "Are you sure you want to clear the app cache and reload?",
+        "cardDate": "<span>📅 Date</span>"
     },
     "ID": {
         "btnLang": '<i class="fa-solid fa-globe"></i> EN',
@@ -132,7 +133,8 @@ const uiTranslations = {
         "noResults": "Maaf, ROM atau perangkat yang Anda cari tidak tersedia. 😢",
         "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️",
         "btnClear": '<i class="fa-solid fa-broom"></i> Bersihkan',
-        "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?"
+        "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?",
+        "cardDate": "<span>📅 Tanggal</span>"
     }
 };
 
@@ -259,6 +261,7 @@ function renderCards() {
                     ${safetyHtml}
                 </div>
                 <div class="detail-item">${dict["cardDevice"]} <strong title="${rom.device}">${rom.device}</strong></div>
+                <div class="detail-item">${dict["cardDate"]} <strong>${rom.date}</strong></div>
                 <div class="detail-item">${dict["cardDetail"]} <strong>${rom.category}</strong></div>
                 <div class="detail-item">${dict["cardMaintainer"]} <strong>${rom.maintainer}</strong></div>
                 <div class="detail-item">${dict["cardSize"]} <strong>${rom.size}</strong></div>

@@ -1,6 +1,67 @@
 [
     {
+        "name": "Lunaris-AOSP-X00TD-Community-3.9-VANILLA",
+        "date": "2026-04-13",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.6 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1SWi3aibhm696EvucfhKmC5GQqrjg2niH&export=download",
+        "md5": "611955ed6b499eaaaaa2a982973688ef",
+        "gapps": false,
+        "safetynet": true,
+        "changelog": [
+            "Sync with latest source side",
+            "Fix auto brightness",
+            "Optimize thermal vadc",
+            "Update LMKD props",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "MistOS-4.6.1-Lucent-HotFix-VANILLA-X01BD-UNOFFICIAL",
+        "date": "2026-04-13",
+        "device": "Asus Zenfone Max Pro M2 (X01BD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.6 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1z5sXQY7HRBO5D-3OcIRxiO9nTzvDyvDs&export=download",
+        "md5": "491f114020f4d17ef5a7453c098da585",
+        "gapps": false,
+        "safetynet": true,
+        "changelog": [
+            "Sync with latest source side",
+            "Fix auto brightness",
+            "Optimize thermal vadc",
+            "Update LMKD props",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "MistOS-4.6.1-Lucent-HotFix-VANILLA-X00TD-UNOFFICIAL",
+        "date": "2026-04-13",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.6 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1fZCu8hG-bv_yX_UlJmtjzVZfG2nbf1PZ&export=download",
+        "md5": "b27beade2940727bce4be44a7f2e2154",
+        "gapps": false,
+        "safetynet": true,
+        "changelog": [
+            "Sync with latest source side",
+            "Fix auto brightness",
+            "Optimize thermal vadc",
+            "Update LMKD props",
+            "Improved battery backup"
+        ]
+    },
+    {
         "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X01BD-Vanilla",
+        "date": "2026-04-12",
         "device": "Asus Zenfone Max Pro M2 (X01BD)",
         "type": "ROM",
         "category": "Android 16",
@@ -20,6 +81,7 @@
     },
     {
         "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X00TD-Gapps",
+        "date": "2026-04-12",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
@@ -39,6 +101,7 @@
     },
     {
         "name": "Matrixx-v12.2-Aurora-UNOFFICIAL-X00TD-Vanilla",
+        "date": "2026-04-12",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
@@ -57,7 +120,8 @@
         ]
     },
     {
-        "name": "Nusantara-SiXtY-N9-X00T-08042026-10.0.14",
+        "name": "Nusantara-SiXtY-N9-X00T-10.0.14",
+        "date": "2026-04-08",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 10",
@@ -76,7 +140,8 @@
         ]
     },
     {
-        "name": "EvolutionX-16.0-20260401-11.6.2-Unofficial",
+        "name": "EvolutionX-16.0-11.6.2-Unofficial",
+        "date": "2026-04-01",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
@@ -93,7 +158,8 @@
         ]
     },
     {
-        "name": "lineage-17.1-20260305-UNOFFICIAL",
+        "name": "lineage-17.1-UNOFFICIAL",
+        "date": "2026-03-05",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 10",
@@ -112,6 +178,7 @@
     },
     {
         "name": "lineage-23.2-20260323-UNOFFICIAL",
+        "date": "2026-03-23",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
@@ -129,7 +196,8 @@
         ]
     },
     {
-        "name": "voltage-5.8-20260405-1350-UNOFFICIAL",
+        "name": "voltage-5.8-UNOFFICIAL",
+        "date": "2026-04-05",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
@@ -148,6 +216,7 @@
     },
     {
         "name": "TheOneMemory Kernel",
+        "date": "2026-03-24",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "Kernel",
         "category": "Kernel",
@@ -156,13 +225,14 @@
         "downloadLink": "https://www.pling.com/p/2259777",
         "md5": "8a9c2b4d6e8f0a1c3b5d7e9f2a4c6b8d",
         "changelog": [
-            "Merged latest Linux upstream CIP st14",
+            "Merged latest Linux upstream CIP st13",
             "Optimized CPU scheduler",
             "Fixed deep sleep issues"
         ]
     },
     {
-        "name": "Project_Infinity-X-3.9-05.04.2026-GAPPS-UNOFFICIAL",
+        "name": "Project_Infinity-X-GAPPS-UNOFFICIAL",
+        "date": "2026-04-05",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
         "category": "Android 16",
