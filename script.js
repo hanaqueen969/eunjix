@@ -588,6 +588,23 @@ if (currentLang !== "EN") {
 // Fetch the data and kick off the card rendering process
 loadROMData();
 
+// --- SMART SEARCH AUTO-SCROLL ---
+const searchInputBox = document.getElementById("searchInput");
+if (searchInputBox) {
+    searchInputBox.addEventListener("focus", function() {
+        setTimeout(() => {
+            this.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 300);
+    });
+}
+// -------------------------------------------
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js');
+    });
+}
+
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
         navigator.serviceWorker.register('sw.js');
