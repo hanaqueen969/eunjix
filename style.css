@@ -28,10 +28,8 @@ body.dark-mode {
     /* NEON NEON NEON */
     --md-primary: #BC9CFF; /* Bright glowing neon purple */
     --md-on-primary: #0A0A0C; /* Deep black on bright colors */
-    
     --md-primary-container: #21005D; /* Keep the Material base container */
     --md-on-primary-container: #BC9CFF; /* Neon purple on deep background */
-    
     --md-outline: #938F99;
     
     /* NEW: Glowing Cyberpunk Dot Matrix color for Dark Mode (More intense) */
@@ -51,10 +49,6 @@ body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s, color 0.3s;
-    color: var(--md-text);
-    margin: 0;
-    padding: 0;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 /* ==========================================
@@ -70,9 +64,42 @@ header {
     align-items: center;
 }
 
-/* (Maintain the header-card-gradient styling as-is, just update the animations section) */
+/* Main Card Container with Cosmic Gradient */
+.header-card-gradient {
+    background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
+    background-size: 300% 100%;
+    animation: gradientWalk 6s infinite linear;
+    color: #FFFFFF;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto 15px;
+    padding: 50px 30px; 
+    border-radius: var(--radius-card);
+    box-shadow: 0 10px 30px rgba(103, 80, 164, 0.3);
+    transition: box-shadow 0.3s;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
 
-/* ... other header styling stays the same ... */
+body.dark-mode .header-card-gradient {
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+@keyframes gradientWalk {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+/* Main Title Container Styling */
+.header-main-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+    flex-wrap: nowrap;
+}
 
 /* Judul H1 (Solid White, Enlarged, and Ready for Glitch) */
 .header-h1-solid {
@@ -91,7 +118,6 @@ header {
 /* ==========================================
    THE CYBERPUNK GLITCH EFFECT (TRIGGERED ON HOVER)
    ========================================== */
-
 /* Pseudo-element 1: The Cyan Layer (Becomes magenta on glitch-hover) */
 .header-h1-solid::before {
     content: attr(data-text); /* Duplicate text from HTML */
@@ -100,14 +126,10 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Shift slightly and recolor */
     left: -2px; 
     text-shadow: 2px 0 #00c6ff, -2px 0 #ff007f; /* Neon cyan and magenta layers */
     color: #FFFFFF;
     background: none;
-    
-    /* Animation hidden by default */
     clip-path: rect(44px, 450px, 56px, 0);
     opacity: 0; 
     transition: opacity 0.2s;
@@ -121,14 +143,10 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    
-    /* Shift and recolor */
     left: 2px;
     text-shadow: -2px 0 #ff007f, 2px 0 #00c6ff;
     color: #FFFFFF;
     background: none;
-    
-    /* Animation hidden by default */
     clip-path: rect(44px, 450px, 56px, 0);
     opacity: 0; 
     transition: opacity 0.2s;
@@ -172,6 +190,55 @@ header {
     80% { clip-path: inset(85% 0 5% 0); }
     90% { clip-path: inset(20% 0 60% 0); }
     100% { clip-path: inset(5% 0 90% 0); }
+}
+
+/* Logos & Subtitle */
+.logo {
+    width: 80px;
+    height: auto;
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+.custom-title-logo {
+    height: 4.5rem;
+    width: auto;
+    vertical-align: middle;
+    animation: floatAnim 3s ease-in-out infinite;
+    animation-delay: 1.5s; 
+}
+
+@keyframes floatAnim {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); } 
+    100% { transform: translateY(0px); }
+}
+
+.subtitle {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    min-height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.90rem; 
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.cursor {
+    color: #FFFFFF;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 600px) {
+    .header-main-title { gap: 10px; }
+    .header-h1-solid { font-size: 2.2rem; }
+    .logo { width: 50px; }
+    .custom-title-logo { height: 3rem; }
 }
 
 /* ==========================================
@@ -244,7 +311,9 @@ body.dark-mode .btn-donate {
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.disclaimer-banner p { margin: 0; }
+.disclaimer-banner p {
+    margin: 0;
+}
 
 body.dark-mode .disclaimer-banner {
     background-color: #8C1D18;
@@ -336,62 +405,52 @@ body.dark-mode .disclaimer-banner {
    CARD WITH EDGE LASER EFFECT (CYBERPUNK)
    ========================================== */
 .card {
-    /* Original background-color REMOVED, set to transparent so laser works */
-    background-color: transparent; 
+    background-color: transparent;
     border-radius: var(--radius-card);
     padding: 24px;
     border: none;
     transition: transform 0.2s ease;
-    
-    /* MANDATORY LASER CODE */
     position: relative;
-    overflow: hidden; /* Contain laser to prevent leaking outside the box */
-    z-index: 1; /* Ensure text and buttons remain clickable */
+    overflow: hidden; 
+    z-index: 1; 
 }
 
-/* Slightly enlarge on hover */
 .card:hover {
     transform: translateY(-5px);
 }
 
-/* CARD BACKGROUND (Replaces original color, covers center of laser) */
 .card::after {
     content: '';
     position: absolute;
-    inset: 3px; /* LASER THICKNESS (3px) */
-    background-color: var(--md-surface); /* Normal card color */
+    inset: 3px; 
+    background-color: var(--md-surface); 
     border-radius: calc(var(--radius-card) - 3px);
-    z-index: -1; /* Hidden right below text */
+    z-index: -1; 
     transition: background-color 0.3s;
 }
 
-/* Change inner card color on hover */
 .card:hover::after {
     background-color: var(--md-surface-variant);
 }
 
-/* LASER ANIMATION (Spinning light) */
 .card::before {
     content: '';
     position: absolute;
-    width: 200%; /* Must be larger than card to reach corners */
+    width: 200%; 
     height: 200%;
     top: -50%;
     left: -50%;
-    /* Laser gradient: Transparent -> Cyan Blue -> Primary Purple */
     background: conic-gradient(from 0deg, transparent 70%, #00c6ff 80%, var(--md-primary) 100%);
-    animation: spinLaser 3s linear infinite; /* Endless spin */
-    z-index: -2; /* Positioned at the very bottom layer */
-    opacity: 0; /* Laser OFF when idle */
+    animation: spinLaser 3s linear infinite; 
+    z-index: -2; 
+    opacity: 0; 
     transition: opacity 0.4s ease;
 }
 
-/* Turn ON laser ONLY when card is hovered */
 .card:hover::before {
-    opacity: 1; 
+    opacity: 1;
 }
 
-/* Laser spin director */
 @keyframes spinLaser {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -409,7 +468,7 @@ body.dark-mode .disclaimer-banner {
     line-height: 1.4;
 }
 
-/* Badge Base (Keep existing, just updating dark mode colors below) */
+/* Badge Base */
 .badge {
     display: inline-block;
     padding: 6px 14px;
@@ -419,20 +478,20 @@ body.dark-mode .disclaimer-banner {
     margin-bottom: 10px;
 }
 
-/* Light Mode Badges (No change) */
+/* Light Mode Badges */
 .badge-rom { background-color: #C4EED0; color: #072711; }
 .badge-kernel { background-color: #FFDCC3; color: #2E1500; }
 
-/* NEW: Glowing Neon Badges for Dark Mode (Hacker Style) */
+/* Glowing Neon Badges for Dark Mode */
 body.dark-mode .badge-rom { 
-    background-color: #00FF33; /* Pure neon green */
-    color: #0A0A0C; /* Solid black for contrast */
-    box-shadow: 0 0 10px rgba(0, 255, 51, 0.4); /* Glow effect */
+    background-color: #00FF33; 
+    color: #0A0A0C; 
+    box-shadow: 0 0 10px rgba(0, 255, 51, 0.4); 
 }
 body.dark-mode .badge-kernel { 
-    background-color: #FF9900; /* Intense neon orange */
-    color: #0A0A0C; /* Solid black */
-    box-shadow: 0 0 10px rgba(255, 153, 0, 0.4); /* Glow effect */
+    background-color: #FF9900; 
+    color: #0A0A0C; 
+    box-shadow: 0 0 10px rgba(255, 153, 0, 0.4); 
 }
 
 .spec-container {
@@ -483,7 +542,9 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     user-select: none;
 }
 
-.action-text:hover { text-decoration: underline; }
+.action-text:hover {
+    text-decoration: underline;
+}
 
 .changelog-content {
     display: none;
@@ -496,8 +557,14 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     animation: fadeIn 0.3s ease-in-out;
 }
 
-.changelog-content ul { margin: 0; padding-left: 20px; }
-.changelog-content li { margin-bottom: 5px; }
+.changelog-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.changelog-content li {
+    margin-bottom: 5px;
+}
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
@@ -522,7 +589,9 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     transition: opacity 0.2s;
 }
 
-.btn-download:hover { opacity: 0.9; }
+.btn-download:hover {
+    opacity: 0.9;
+}
 
 .btn-share {
     flex: 1;
@@ -535,7 +604,9 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     transition: all 0.2s;
 }
 
-.btn-share:hover { background-color: var(--md-surface-variant); }
+.btn-share:hover {
+    background-color: var(--md-surface-variant);
+}
 
 .no-results {
     text-align: center;
@@ -580,8 +651,13 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     margin-bottom: 40px;
 }
 
-.load-more-container .btn-action i { transition: transform 0.4s ease; }
-.load-more-container .btn-action:hover i { transform: rotate(180deg); }
+.load-more-container .btn-action i {
+    transition: transform 0.4s ease;
+}
+
+.load-more-container .btn-action:hover i {
+    transform: rotate(180deg);
+}
 
 .spinner {
     width: 40px;
@@ -665,7 +741,11 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     margin-bottom: 15px;
 }
 
-.modal-header h2 { margin: 0; font-size: 1.5rem; color: var(--md-text); }
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--md-text);
+}
 
 .close-btn {
     background: none;
@@ -675,13 +755,28 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     cursor: pointer;
 }
 
-.modal-body p { margin-top: 0; color: #B3261E; }
-body.dark-mode .modal-body p { color: #F2B8B5; }
-.modal-body ol { padding-left: 20px; color: var(--md-text); }
-.modal-body li { margin-bottom: 10px; }
+.modal-body p {
+    margin-top: 0;
+    color: #B3261E;
+}
+
+body.dark-mode .modal-body p {
+    color: #F2B8B5;
+}
+
+.modal-body ol {
+    padding-left: 20px;
+    color: var(--md-text);
+}
+
+.modal-body li {
+    margin-bottom: 10px;
+}
 
 /* Developer Profile Modal */
-.text-center { text-align: center; }
+.text-center {
+    text-align: center;
+}
 
 .dev-avatar {
     width: 100px;
@@ -693,9 +788,25 @@ body.dark-mode .modal-body p { color: #F2B8B5; }
     padding: 5px;
 }
 
-.dev-name { margin: 0; color: var(--md-text); font-size: 1.6rem; }
-.dev-role { color: var(--md-primary); font-weight: bold; margin-top: 5px; font-size: 0.95rem; }
-.dev-bio { color: var(--md-text-variant); font-size: 0.95rem; line-height: 1.6; margin: 15px 0; }
+.dev-name {
+    margin: 0;
+    color: var(--md-text);
+    font-size: 1.6rem;
+}
+
+.dev-role {
+    color: var(--md-primary);
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+.dev-bio {
+    color: var(--md-text-variant);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 15px 0;
+}
 
 .dev-skills {
     display: flex;
@@ -780,7 +891,9 @@ footer {
     margin-top: 50px;
 }
 
-.social-links { margin-top: 20px; }
+.social-links {
+    margin-top: 20px;
+}
 
 .social-links a {
     text-decoration: none;
@@ -794,7 +907,9 @@ footer {
     transition: color 0.3s, transform 0.3s;
 }
 
-.social-links a:hover { transform: scale(1.1); }
+.social-links a:hover {
+    transform: scale(1.1);
+}
 
 .icon-about { color: var(--md-primary); }
 .icon-telegram { color: #24A1DE; }
@@ -820,8 +935,15 @@ body.dark-mode .icon-github { color: #ffffff; }
     z-index: 1000;
 }
 
-#btnScrollTop.show { opacity: 1; pointer-events: auto; }
-#btnScrollTop:hover { filter: brightness(0.95); transform: translateY(-3px); }
+#btnScrollTop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#btnScrollTop:hover {
+    filter: brightness(0.95);
+    transform: translateY(-3px);
+}
 
 .fab-community {
     position: fixed;
