@@ -9,8 +9,8 @@ const itemsPerPage = 6;
 let currentlyDisplayed = 0;
 let initialLoad = true;
 
-// Default Language
-let currentLang = "EN"; 
+// REPAIRED: Check browser memory right from the start, default to "EN"
+let currentLang = localStorage.getItem("eunjix_lang") || "EN"; 
 
 // The Giant Digital Dictionary
 const uiTranslations = {
@@ -409,22 +409,27 @@ function runFilter() {
 }
 
 // ==========================================
-// 6. THEME, SCROLL & LANGUAGE
+// 6. THEME, SCROLL & LANGUAGE (WITH LOCAL STORAGE)
 // ==========================================
+
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
     const button = document.querySelector(".btn-toggle");
     const dict = uiTranslations[currentLang];
     
-    if (document.body.classList.contains("dark-mode")) {
+    // Save theme preference to local storage
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    localStorage.setItem("eunjix_theme", isDarkMode ? "dark" : "light");
+    
+    if (isDarkMode) {
         button.innerHTML = dict["btnThemeLight"];
     } else {
         button.innerHTML = dict["btnThemeDark"];
     }
 }
 
-function toggleLanguage() {
-    currentLang = currentLang === "EN" ? "ID" : "EN";
+// Function to apply translation to the entire UI
+function applyTranslationUI(showNotification = true) {
     const dict = uiTranslations[currentLang];
     
     // 1. Translate UI elements with data-i18n attribute
@@ -458,8 +463,21 @@ function toggleLanguage() {
     currentlyDisplayed = 0;
     renderCards();
 
-    // 6. Show confirmation toast
-    showToast(dict["toastLang"]);
+    // 6. Show confirmation toast ONLY when button is clicked
+    if (showNotification) {
+        showToast(dict["toastLang"]);
+    }
+}
+
+function toggleLanguage() {
+    // Switch the active language
+    currentLang = currentLang === "EN" ? "ID" : "EN";
+    
+    // Save the choice to browser's long-term memory
+    localStorage.setItem("eunjix_lang", currentLang);
+    
+    // Apply changes and show notification
+    applyTranslationUI(true);
 }
 
 window.addEventListener('scroll', function() {
@@ -476,6 +494,20 @@ function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
 // ==========================================
 // 7. INITIALIZATION & PWA
 // ==========================================
+
+// Apply saved theme on page load (Must execute before rendering cards)
+if (localStorage.getItem("eunjix_theme") === "light") {
+    document.body.classList.remove("dark-mode");
+}
+
+// Apply saved language on page load (without showing popup)
+if (currentLang !== "EN") {
+    // Wait slightly for DOM to be ready before applying translations
+    window.addEventListener('DOMContentLoaded', (event) => {
+        applyTranslationUI(false);
+    });
+}
+
 loadROMData();
 
 if ('serviceWorker' in navigator) {
