@@ -365,9 +365,9 @@ function toggleTheme() {
     const button = document.querySelector(".btn-toggle");
     
     if (document.body.classList.contains("dark-mode")) {
-        button.innerHTML = "☀️ Light Mode";
+        button.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
     } else {
-        button.innerHTML = "🌙 Dark Mode";
+        button.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
     }
 }
 
