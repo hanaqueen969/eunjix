@@ -70,7 +70,9 @@ const uiTranslations = {
         "toastDirect": "✅ Direct Card Link Copied!",
         "toastLang": "✅ Language changed to English!",
         "noResults": "Sorry, the ROM or device you are looking for is not available. 😢",
-        "errorFetch": "Sorry, failed to load data from data.json. ⚠️"
+        "errorFetch": "Sorry, failed to load data from data.json. ⚠️",
+        "btnClear": '<i class="fa-solid fa-broom"></i> Cache',
+        "confirmClear": "Are you sure you want to clear the app cache and reload?"
     },
     "ID": {
         "btnLang": '<i class="fa-solid fa-globe"></i> EN',
@@ -128,7 +130,9 @@ const uiTranslations = {
         "toastDirect": "✅ Tautan Langsung Kartu Disalin!",
         "toastLang": "✅ Bahasa diubah ke Indonesia!",
         "noResults": "Maaf, ROM atau perangkat yang Anda cari tidak tersedia. 😢",
-        "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️"
+        "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️",
+        "btnClear": '<i class="fa-solid fa-broom"></i> Bersihkan',
+        "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?"
     }
 };
 
@@ -604,3 +608,36 @@ function typeWriterEffect() {
 }
 // Start typewriter effect after a short delay
 typewriterTimeout = setTimeout(typeWriterEffect, 500);
+
+// ==========================================
+// 9. CACHE MANAGEMENT
+// ==========================================
+function clearAppCache() {
+    const dict = uiTranslations[currentLang];
+    
+    // Ask for user confirmation before clearing
+    if (confirm(dict["confirmClear"])) {
+        // 1. Clear Service Worker Caches
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                for (let name of names) {
+                    caches.delete(name);
+                }
+            });
+        }
+        
+        // 2. Unregister Service Workers to force a fresh install
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
+        
+        // 3. Reload the page forcefully from the server
+        setTimeout(() => {
+            window.location.reload(true);
+        }, 500);
+    }
+}

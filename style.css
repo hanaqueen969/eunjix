@@ -199,10 +199,9 @@ body.dark-mode .header-card-gradient {
 /* ==========================================
    LANGUAGE SWITCHER BUTTON
    ========================================== */
-.btn-lang {
+.btn-lang, .btn-clear {
     position: absolute;
     top: 25px;
-    right: 25px;
     background-color: transparent;
     color: var(--md-text-variant);
     border: 1px solid var(--md-outline);
@@ -219,7 +218,11 @@ body.dark-mode .header-card-gradient {
     z-index: 100;
 }
 
-.btn-lang:hover {
+/* Position specifics */
+.btn-lang { right: 25px; }
+.btn-clear { left: 25px; }
+
+.btn-lang:hover, .btn-clear:hover {
     background-color: var(--md-primary-container);
     color: var(--md-on-primary-container);
     border-color: transparent;
@@ -227,18 +230,21 @@ body.dark-mode .header-card-gradient {
 }
 
 /* Neon glow in Dark Mode */
-body.dark-mode .btn-lang:hover {
+/* Neon glow in Dark Mode */
+body.dark-mode .btn-lang:hover, 
+body.dark-mode .btn-clear:hover {
     box-shadow: 0 4px 12px rgba(188, 156, 255, 0.3);
 }
 
 /* Auto-adjust position on small phone screens */
 @media (max-width: 600px) {
-    .btn-lang {
+    .btn-lang, .btn-clear {
         top: 15px;
-        right: 15px;
         padding: 6px 12px;
         font-size: 0.8rem;
     }
+    .btn-lang { right: 15px; }
+    .btn-clear { left: 15px; }
 }
 
 /* Logos & Subtitle */
