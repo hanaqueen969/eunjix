@@ -473,7 +473,7 @@ body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
    ========================================== */
 .container {
     max-width: 1000px;
-    margin: 20px auto 40px;
+    margin: 10px auto 25px; 
     padding: 0 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -729,7 +729,7 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
 
 .load-more-container {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .load-more-container .btn-action i {
@@ -911,7 +911,7 @@ body.dark-mode .modal-body p {
    ========================================== */
 .ad-container {
     text-align: center;
-    margin: 20px auto 30px;
+    margin: 15px auto; 
     max-width: 800px;
     padding: 10px;
     background-color: transparent;
@@ -941,7 +941,7 @@ body.dark-mode .modal-body p {
 
 .comments-container {
     max-width: 800px;
-    margin: 40px auto;
+    margin: 20px auto 40px; 
     padding: 30px;
     background-color: var(--md-surface);
     border-radius: var(--radius-card);
