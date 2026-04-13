@@ -9,7 +9,7 @@ const itemsPerPage = 6;
 let currentlyDisplayed = 0;
 let initialLoad = true;
 
-// REPAIRED: Check browser memory right from the start, default to "EN"
+// Check browser memory right from the start, default to "EN"
 let currentLang = localStorage.getItem("eunjix_lang") || "EN"; 
 
 // The Giant Digital Dictionary
@@ -69,7 +69,8 @@ const uiTranslations = {
         "toastLink": "✅ Download Link Copied!",
         "toastDirect": "✅ Direct Card Link Copied!",
         "toastLang": "✅ Language changed to English!",
-        "noResults": "Sorry, the ROM or device you are looking for is not available. 😢"
+        "noResults": "Sorry, the ROM or device you are looking for is not available. 😢",
+        "errorFetch": "Sorry, failed to load data from data.json. ⚠️"
     },
     "ID": {
         "btnLang": '<i class="fa-solid fa-globe"></i> EN',
@@ -126,7 +127,8 @@ const uiTranslations = {
         "toastLink": "✅ Tautan Unduhan Disalin!",
         "toastDirect": "✅ Tautan Langsung Kartu Disalin!",
         "toastLang": "✅ Bahasa diubah ke Indonesia!",
-        "noResults": "Maaf, ROM atau perangkat yang Anda cari tidak tersedia. 😢"
+        "noResults": "Maaf, ROM atau perangkat yang Anda cari tidak tersedia. 😢",
+        "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️"
     }
 };
 
@@ -152,13 +154,22 @@ function showSkeleton() {
 async function loadROMData() {
     showSkeleton();
     try {
+        // Simulating a slight network delay to showcase the skeleton UI
         await new Promise(resolve => setTimeout(resolve, 1000));
+        
         const response = await fetch('data.json');
+        
+        // Safeguard if file is missing or server error
+        if (!response.ok) {
+            throw new Error("HTTP error " + response.status);
+        }
+        
         romData = await response.json();
         runFilter();
     } catch (error) {
         console.error("Failed to load data:", error);
-        document.getElementById("romContainer").innerHTML = `<div class="no-results">Sorry, failed to load ROM data. ⚠️</div>`;
+        const dict = uiTranslations[currentLang];
+        document.getElementById("romContainer").innerHTML = `<div class="no-results">${dict["errorFetch"]}</div>`;
     }
 }
 
@@ -167,6 +178,7 @@ function renderCards() {
     const loadMoreBtn = document.getElementById("loadMoreContainer");
     const dict = uiTranslations[currentLang]; // Active dictionary
 
+    // Handle empty state (e.g., search found nothing)
     if (filteredData.length === 0) {
         container.innerHTML = `<div class="no-results">${dict["noResults"]}</div>`;
         loadMoreBtn.style.display = "none";
@@ -175,12 +187,15 @@ function renderCards() {
 
     const endPoint = currentlyDisplayed + itemsPerPage;
     const dataToRender = filteredData.slice(currentlyDisplayed, endPoint);
+    
+    // Temporary container to prevent mobile browser memory crash
     let tempHTML = ""; 
 
     for (let i = 0; i < dataToRender.length; i++) {
         const rom = dataToRender[i];
         const badgeClass = rom.type === "ROM" ? "badge-rom" : "badge-kernel";
 
+        // GApps Badge Logic
         let gappsHtml = "";
         if (rom.type === "ROM") {
             if (rom.gapps) {
@@ -190,6 +205,7 @@ function renderCards() {
             }
         }
 
+        // SafetyNet Badge Logic
         let safetyHtml = "";
         if (rom.type === "ROM") {
             if (rom.safetynet) {
@@ -199,6 +215,7 @@ function renderCards() {
             }
         }
 
+        // Changelog Logic
         let changelogList = "";
         if (rom.changelog && rom.changelog.length > 0) {
             for (let j = 0; j < rom.changelog.length; j++) {
@@ -208,13 +225,15 @@ function renderCards() {
             changelogList = dict["cardNoChangelog"];
         }
 
+        // Monetization Logic (Safeguard external links)
         let finalDownloadLink = rom.downloadLink;
         const excludeKeywords = ["eunjix.vercel.app", "t.me", "github.com", "sociabuzz.com", "pling.com", "sourceforge.net"];
         let shouldMonetize = true;
 
         for (let k = 0; k < excludeKeywords.length; k++) {
             if (finalDownloadLink.includes(excludeKeywords[k])) {
-                shouldMonetize = false; break;
+                shouldMonetize = false; 
+                break;
             }
         }
 
@@ -223,6 +242,7 @@ function renderCards() {
             finalDownloadLink = `https://sfl.gl/st?api=3ad571faff74debf487ee1375380cb041c3f4010&url=${encodedUrl}`;
         }
 
+        // Card HTML Structure
         const cardHTML = `
             <div class="card" id="${rom.md5}">
                 <span class="badge ${badgeClass}">${rom.type}</span>
@@ -258,9 +278,11 @@ function renderCards() {
         tempHTML += cardHTML; 
     }
 
+    // Inject all compiled cards into the DOM at once (High Performance)
     container.insertAdjacentHTML('beforeend', tempHTML);
     currentlyDisplayed += dataToRender.length;
 
+    // Toggle "Load More" button visibility
     if (currentlyDisplayed < filteredData.length) {
         loadMoreBtn.style.display = "block";
     } else {
@@ -271,12 +293,14 @@ function renderCards() {
 function loadMore() {
     const btn = document.getElementById("loadMoreBtn");
     const spinner = document.getElementById("loadingSpinner");
+    
     btn.style.display = "none";
     spinner.style.display = "block";
     
     setTimeout(function() {
         renderCards();
         spinner.style.display = "none";
+        
         if (currentlyDisplayed < filteredData.length) {
             btn.style.display = "inline-block";
         }
@@ -290,28 +314,40 @@ function showToast(message) {
     const toast = document.getElementById("toast");
     toast.innerText = message;
     toast.className = "toast show";
-    setTimeout(function() { toast.className = toast.className.replace("show", ""); }, 3000);
+    
+    setTimeout(function() { 
+        toast.className = toast.className.replace("show", ""); 
+    }, 3000);
 }
 
 function viewMD5(buttonElement, hashMD5) {
     const dict = uiTranslations[currentLang];
-    if (buttonElement.innerText === dict["btnView"].replace(/<[^>]*>?/gm, '').trim()) {
+    // Strip HTML tags from translation dictionary string for comparison
+    const rawBtnViewText = dict["btnView"].replace(/<[^>]*>?/gm, '').trim();
+
+    if (buttonElement.innerText === rawBtnViewText) {
         buttonElement.innerText = hashMD5;
         buttonElement.style.fontFamily = "monospace";
         buttonElement.style.fontSize = "0.85rem";
         buttonElement.style.wordBreak = "break-all";
     } else {
-        navigator.clipboard.writeText(hashMD5).then(function() { showToast(dict["toastMD5"]); });
+        navigator.clipboard.writeText(hashMD5).then(function() { 
+            showToast(dict["toastMD5"]); 
+        });
     }
 }
 
 function copyLink(url) {
-    navigator.clipboard.writeText(url).then(function() { showToast(uiTranslations[currentLang]["toastLink"]); });
+    navigator.clipboard.writeText(url).then(function() { 
+        showToast(uiTranslations[currentLang]["toastLink"]); 
+    });
 }
 
 function copyCardLink(hashId) {
     const cardUrl = window.location.origin + window.location.pathname + '#' + hashId;
-    navigator.clipboard.writeText(cardUrl).then(function() { showToast(uiTranslations[currentLang]["toastDirect"]); });
+    navigator.clipboard.writeText(cardUrl).then(function() { 
+        showToast(uiTranslations[currentLang]["toastDirect"]); 
+    });
 }
 
 function toggleChangelog(buttonElement) {
@@ -330,14 +366,28 @@ function toggleChangelog(buttonElement) {
 // ==========================================
 // 4. MODALS & POPUPS
 // ==========================================
-function openModal() { document.getElementById("installModal").style.display = "block"; }
-function closeModal() { document.getElementById("installModal").style.display = "none"; }
-function openAboutModal(event) { event.preventDefault(); document.getElementById("aboutModal").style.display = "block"; }
-function closeAboutModal() { document.getElementById("aboutModal").style.display = "none"; }
+function openModal() { 
+    document.getElementById("installModal").style.display = "block"; 
+}
 
+function closeModal() { 
+    document.getElementById("installModal").style.display = "none"; 
+}
+
+function openAboutModal(event) { 
+    event.preventDefault(); 
+    document.getElementById("aboutModal").style.display = "block"; 
+}
+
+function closeAboutModal() { 
+    document.getElementById("aboutModal").style.display = "none"; 
+}
+
+// Close modals when clicking outside of them
 window.addEventListener('click', function(event) {
     const installModal = document.getElementById("installModal");
     const aboutModal = document.getElementById("aboutModal");
+    
     if (event.target === installModal) installModal.style.display = "none";
     if (event.target === aboutModal) aboutModal.style.display = "none";
 });
@@ -347,9 +397,13 @@ window.addEventListener('click', function(event) {
 // ==========================================
 function changeCategory(buttonElement, category) {
     activeCategory = category;
+    
     const allButtons = document.getElementsByClassName("btn-filter");
-    for(let i = 0; i < allButtons.length; i++) allButtons[i].classList.remove("active");
+    for(let i = 0; i < allButtons.length; i++) {
+        allButtons[i].classList.remove("active");
+    }
     buttonElement.classList.add("active");
+    
     runFilter();
 }
 
@@ -369,26 +423,36 @@ function runFilter() {
     const input = document.getElementById("searchInput").value.toLowerCase();
     
     filteredData = romData.filter(function(rom) {
-        const textMatch = rom.name.toLowerCase().includes(input) || rom.device.toLowerCase().includes(input) || rom.maintainer.toLowerCase().includes(input);
+        const textMatch = rom.name.toLowerCase().includes(input) || 
+                          rom.device.toLowerCase().includes(input) || 
+                          rom.maintainer.toLowerCase().includes(input);
         const categoryMatch = (activeCategory === "All") || (rom.type === activeCategory);
         return textMatch && categoryMatch;
     });
     
     filteredData.sort(function(a, b) {
-        if (activeSort === "name-asc") return a.name.localeCompare(b.name);
-        else if (activeSort === "size-asc") return parseSize(a.size) - parseSize(b.size);
-        else if (activeSort === "size-desc") return parseSize(b.size) - parseSize(a.size);
+        if (activeSort === "name-asc") {
+            return a.name.localeCompare(b.name);
+        } else if (activeSort === "size-asc") {
+            return parseSize(a.size) - parseSize(b.size);
+        } else if (activeSort === "size-desc") {
+            return parseSize(b.size) - parseSize(a.size);
+        }
     });
     
     currentlyDisplayed = 0;
     document.getElementById("romContainer").innerHTML = "";
     
+    // SAFEGUARD: Deep Link handling with try-catch
     try {
         if (initialLoad && window.location.hash) {
             const hash = decodeURIComponent(window.location.hash.substring(1));
             const targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
+            
             if (targetIndex !== -1) {
-                while (currentlyDisplayed <= targetIndex) renderCards();
+                while (currentlyDisplayed <= targetIndex) {
+                    renderCards();
+                }
                 setTimeout(() => {
                     const targetCard = document.getElementById(hash);
                     if (targetCard) {
@@ -402,7 +466,9 @@ function runFilter() {
                 return;
             }
         }
-    } catch (error) { console.error("Deep link error:", error); }
+    } catch (error) { 
+        console.error("Deep link error caught and handled:", error); 
+    }
     
     initialLoad = false;
     renderCards();
@@ -411,7 +477,6 @@ function runFilter() {
 // ==========================================
 // 6. THEME, SCROLL & LANGUAGE (WITH LOCAL STORAGE)
 // ==========================================
-
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
     const button = document.querySelector(".btn-toggle");
@@ -429,7 +494,7 @@ function toggleTheme() {
 }
 
 // Function to apply translation to the entire UI
-function applyTranslationUI(showNotification = true) {
+function applyTranslationUI(showNotification = true, isInitialLoad = false) {
     const dict = uiTranslations[currentLang];
     
     // 1. Translate UI elements with data-i18n attribute
@@ -458,12 +523,15 @@ function applyTranslationUI(showNotification = true) {
     clearTimeout(typewriterTimeout);
     typeWriterEffect();
 
-    // 5. Re-render Cards to apply translation to card elements
-    document.getElementById("romContainer").innerHTML = "";
-    currentlyDisplayed = 0;
-    renderCards();
+    // 5. CRITICAL FIX: Only re-render cards if this is triggered manually (not initial load)
+    // AND if the data has actually been fetched.
+    if (!isInitialLoad && romData.length > 0) {
+        document.getElementById("romContainer").innerHTML = "";
+        currentlyDisplayed = 0;
+        renderCards();
+    }
 
-    // 6. Show confirmation toast ONLY when button is clicked
+    // 6. Show confirmation toast ONLY when button is clicked manually
     if (showNotification) {
         showToast(dict["toastLang"]);
     }
@@ -476,8 +544,8 @@ function toggleLanguage() {
     // Save the choice to browser's long-term memory
     localStorage.setItem("eunjix_lang", currentLang);
     
-    // Apply changes and show notification
-    applyTranslationUI(true);
+    // Apply changes and show notification (Triggering re-render of cards)
+    applyTranslationUI(true, false);
 }
 
 window.addEventListener('scroll', function() {
@@ -489,7 +557,9 @@ window.addEventListener('scroll', function() {
     }
 });
 
-function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+function scrollToTop() { 
+    window.scrollTo({ top: 0, behavior: "smooth" }); 
+}
 
 // ==========================================
 // 7. INITIALIZATION & PWA
@@ -500,14 +570,15 @@ if (localStorage.getItem("eunjix_theme") === "light") {
     document.body.classList.remove("dark-mode");
 }
 
-// Apply saved language on page load (without showing popup)
+// Apply saved language on page load (without showing popup AND without forcing card re-render)
 if (currentLang !== "EN") {
-    // Wait slightly for DOM to be ready before applying translations
-    window.addEventListener('DOMContentLoaded', (event) => {
-        applyTranslationUI(false);
+    // Use DOMContentLoaded to ensure HTML elements exist before translating
+    window.addEventListener('DOMContentLoaded', () => {
+        applyTranslationUI(false, true); 
     });
 }
 
+// Fetch the data and kick off the card rendering process
 loadROMData();
 
 if ('serviceWorker' in navigator) {
@@ -531,4 +602,5 @@ function typeWriterEffect() {
         typewriterTimeout = setTimeout(typeWriterEffect, typingSpeed);
     }
 }
+// Start typewriter effect after a short delay
 typewriterTimeout = setTimeout(typeWriterEffect, 500);
