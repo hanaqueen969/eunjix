@@ -196,6 +196,51 @@ body.dark-mode .header-card-gradient {
     100% { clip-path: inset(5% 0 90% 0); }
 }
 
+/* ==========================================
+   LANGUAGE SWITCHER BUTTON
+   ========================================== */
+.btn-lang {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background-color: transparent;
+    color: var(--md-text-variant);
+    border: 1px solid var(--md-outline);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    /* Smooth micro-animation */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 100;
+}
+
+.btn-lang:hover {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* Neon glow in Dark Mode */
+body.dark-mode .btn-lang:hover {
+    box-shadow: 0 4px 12px rgba(188, 156, 255, 0.3);
+}
+
+/* Auto-adjust position on small phone screens */
+@media (max-width: 600px) {
+    .btn-lang {
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
 /* Logos & Subtitle */
 .logo {
     width: 80px;
