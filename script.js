@@ -15,6 +15,8 @@ let initialLoad = true;
 function showSkeleton() {
     const container = document.getElementById("romContainer");
     container.innerHTML = "";
+    
+    // Generate 6 skeleton cards for loading effect
     for (let i = 0; i < 6; i++) {
         container.innerHTML += `
             <div class="skeleton-card">
@@ -31,11 +33,13 @@ function showSkeleton() {
 async function loadROMData() {
     showSkeleton();
     try {
-        setTimeout(async function() {
-            const response = await fetch('data.json');
-            romData = await response.json();
-            runFilter();
-        }, 1000);
+        // Simulating a slight network delay to showcase the skeleton UI
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        const response = await fetch('data.json');
+        romData = await response.json();
+        
+        runFilter();
     } catch (error) {
         console.error("Failed to load data:", error);
         document.getElementById("romContainer").innerHTML = `<div class="no-results">Sorry, failed to load ROM data. ⚠️</div>`;
@@ -46,22 +50,24 @@ function renderCards() {
     const container = document.getElementById("romContainer");
     const loadMoreBtn = document.getElementById("loadMoreContainer");
 
+    // Handle empty state
     if (filteredData.length === 0) {
         container.innerHTML = `<div class="no-results">Sorry, the ROM or device you are looking for is not available. 😢</div>`;
         loadMoreBtn.style.display = "none";
         return;
     }
 
-    let endPoint = currentlyDisplayed + itemsPerPage;
-    let dataToRender = filteredData.slice(currentlyDisplayed, endPoint);
+    const endPoint = currentlyDisplayed + itemsPerPage;
+    const dataToRender = filteredData.slice(currentlyDisplayed, endPoint);
 
-    // KODE BARU: Keranjang sementara agar memori HP tidak crash!
+    // OPTIMIZATION: Temporary container to prevent mobile browser memory crash
     let tempHTML = ""; 
 
     for (let i = 0; i < dataToRender.length; i++) {
-        let rom = dataToRender[i];
-        let badgeClass = rom.type === "ROM" ? "badge-rom" : "badge-kernel";
+        const rom = dataToRender[i];
+        const badgeClass = rom.type === "ROM" ? "badge-rom" : "badge-kernel";
 
+        // GApps Badge Logic
         let gappsHtml = "";
         if (rom.type === "ROM") {
             if (rom.gapps) {
@@ -71,6 +77,7 @@ function renderCards() {
             }
         }
 
+        // SafetyNet Badge Logic
         let safetyHtml = "";
         if (rom.type === "ROM") {
             if (rom.safetynet) {
@@ -80,6 +87,7 @@ function renderCards() {
             }
         }
 
+        // Changelog Logic
         let changelogList = "";
         if (rom.changelog && rom.changelog.length > 0) {
             for (let j = 0; j < rom.changelog.length; j++) {
@@ -89,8 +97,9 @@ function renderCards() {
             changelogList = "<li>No changelog available.</li>";
         }
 
+        // Monetization Logic (Safeguard external links)
         let finalDownloadLink = rom.downloadLink;
-        let excludeKeywords = ["eunjix.vercel.app", "t.me", "github.com", "sociabuzz.com", "pling.com", "sourceforge.net"];
+        const excludeKeywords = ["eunjix.vercel.app", "t.me", "github.com", "sociabuzz.com", "pling.com", "sourceforge.net"];
         let shouldMonetize = true;
 
         for (let k = 0; k < excludeKeywords.length; k++) {
@@ -101,11 +110,12 @@ function renderCards() {
         }
 
         if (shouldMonetize && finalDownloadLink !== "#") {
-            let encodedUrl = encodeURIComponent(finalDownloadLink);
+            const encodedUrl = encodeURIComponent(finalDownloadLink);
             finalDownloadLink = `https://sfl.gl/st?api=3ad571faff74debf487ee1375380cb041c3f4010&url=${encodedUrl}`;
         }
 
-        let cardHTML = `
+        // Card HTML Structure
+        const cardHTML = `
             <div class="card" id="${rom.md5}">
                 <span class="badge ${badgeClass}">${rom.type}</span>
                 
@@ -141,15 +151,16 @@ function renderCards() {
             </div>
         `;
         
-        // KODE BARU: Simpan di keranjang, jangan langsung ke HTML
+        // Store in temporary container instead of writing directly to the DOM
         tempHTML += cardHTML; 
     }
 
-    // KODE BARU: Tumpahkan semua isi keranjang ke layar sekaligus (Sangat Cepat & Aman!)
+    // Inject all compiled cards into the DOM at once (High Performance & Safe)
     container.insertAdjacentHTML('beforeend', tempHTML);
 
     currentlyDisplayed += dataToRender.length;
 
+    // Toggle "Load More" button visibility
     if (currentlyDisplayed < filteredData.length) {
         loadMoreBtn.style.display = "block";
     } else {
@@ -160,11 +171,14 @@ function renderCards() {
 function loadMore() {
     const btn = document.getElementById("loadMoreBtn");
     const spinner = document.getElementById("loadingSpinner");
+    
     btn.style.display = "none";
     spinner.style.display = "block";
+    
     setTimeout(function() {
         renderCards();
         spinner.style.display = "none";
+        
         if (currentlyDisplayed < filteredData.length) {
             btn.style.display = "inline-block";
         }
@@ -175,9 +189,10 @@ function loadMore() {
 // 3. UI INTERACTIONS & TOAST
 // ==========================================
 function showToast(message) {
-    let toast = document.getElementById("toast");
+    const toast = document.getElementById("toast");
     toast.innerText = message;
     toast.className = "toast show";
+    
     setTimeout(function() {
         toast.className = toast.className.replace("show", "");
     }, 3000);
@@ -203,14 +218,15 @@ function copyLink(url) {
 }
 
 function copyCardLink(hashId) {
-    let cardUrl = window.location.origin + window.location.pathname + '#' + hashId;
+    const cardUrl = window.location.origin + window.location.pathname + '#' + hashId;
     navigator.clipboard.writeText(cardUrl).then(function() {
         showToast("✅ Direct Card Link Copied!");
     });
 }
 
 function toggleChangelog(buttonElement) {
-    let contentBox = buttonElement.parentElement.nextElementSibling;
+    const contentBox = buttonElement.parentElement.nextElementSibling;
+    
     if (contentBox.style.display === "none") {
         contentBox.style.display = "block";
         buttonElement.innerText = "🔼 Hide";
@@ -226,38 +242,45 @@ function toggleChangelog(buttonElement) {
 function openModal() {
     document.getElementById("installModal").style.display = "block";
 }
+
 function closeModal() {
     document.getElementById("installModal").style.display = "none";
 }
+
 function openAboutModal(event) {
     event.preventDefault();
     document.getElementById("aboutModal").style.display = "block";
 }
+
 function closeAboutModal() {
     document.getElementById("aboutModal").style.display = "none";
 }
 
-window.onclick = function(event) {
-    let installModal = document.getElementById("installModal");
-    let aboutModal = document.getElementById("aboutModal");
-    if (event.target == installModal) {
+// Close modals when clicking outside of them
+window.addEventListener('click', function(event) {
+    const installModal = document.getElementById("installModal");
+    const aboutModal = document.getElementById("aboutModal");
+    
+    if (event.target === installModal) {
         installModal.style.display = "none";
     }
-    if (event.target == aboutModal) {
+    if (event.target === aboutModal) {
         aboutModal.style.display = "none";
     }
-}
+});
 
 // ==========================================
 // 5. FILTER & SORTING LOGIC
 // ==========================================
 function changeCategory(buttonElement, category) {
     activeCategory = category;
-    let allButtons = document.getElementsByClassName("btn-filter");
+    
+    const allButtons = document.getElementsByClassName("btn-filter");
     for(let i = 0; i < allButtons.length; i++) {
         allButtons[i].classList.remove("active");
     }
     buttonElement.classList.add("active");
+    
     runFilter();
 }
 
@@ -267,20 +290,20 @@ function changeSort(sortValue) {
 }
 
 function parseSize(sizeStr) {
-    let val = parseFloat(sizeStr);
+    const val = parseFloat(sizeStr);
     if (sizeStr.includes("GB")) return val * 1024;
     if (sizeStr.includes("MB")) return val;
     return 0;
 }
 
 function runFilter() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
+    const input = document.getElementById("searchInput").value.toLowerCase();
     
     filteredData = romData.filter(function(rom) {
-        let textMatch = rom.name.toLowerCase().includes(input) || 
+        const textMatch = rom.name.toLowerCase().includes(input) || 
                         rom.device.toLowerCase().includes(input) || 
                         rom.maintainer.toLowerCase().includes(input);
-        let categoryMatch = (activeCategory === "All") || (rom.type === activeCategory);
+        const categoryMatch = (activeCategory === "All") || (rom.type === activeCategory);
         return textMatch && categoryMatch;
     });
     
@@ -293,23 +316,26 @@ function runFilter() {
             return parseSize(b.size) - parseSize(a.size);
         }
     });
-
+    
     currentlyDisplayed = 0;
     document.getElementById("romContainer").innerHTML = "";
-
+    
+    // SAFEGUARD: Deep Link handling with try-catch
     try {
         if (initialLoad && window.location.hash) {
-            // Decode URI berjaga-jaga jika WhatsApp/Telegram menambahkan karakter aneh
-            let hash = decodeURIComponent(window.location.hash.substring(1));
-            let targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
+            // Decode URI in case WhatsApp/Telegram appends unusual characters
+            const hash = decodeURIComponent(window.location.hash.substring(1));
+            const targetIndex = filteredData.findIndex(rom => rom.md5 === hash);
             
             if (targetIndex !== -1) {
+                // Render enough cards to display the target card
                 while (currentlyDisplayed <= targetIndex) {
                     renderCards();
                 }
                 
+                // Scroll to the card and apply a highlighting effect
                 setTimeout(() => {
-                    let targetCard = document.getElementById(hash);
+                    const targetCard = document.getElementById(hash);
                     if (targetCard) {
                         targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         targetCard.style.transition = "box-shadow 0.5s ease";
@@ -324,7 +350,7 @@ function runFilter() {
             }
         }
     } catch (error) {
-        console.error("Deep Link Error diselamatkan:", error);
+        console.error("Deep link error caught and handled:", error);
     }
     
     initialLoad = false;
@@ -332,11 +358,12 @@ function runFilter() {
 }
 
 // ==========================================
-// 6. THEME & SCROLL
+// 6. THEME & SCROLL LOGIC
 // ==========================================
 function toggleTheme() {
     document.body.classList.toggle("dark-mode");
-    let button = document.querySelector(".btn-toggle");
+    const button = document.querySelector(".btn-toggle");
+    
     if (document.body.classList.contains("dark-mode")) {
         button.innerHTML = "☀️ Light Mode";
     } else {
@@ -344,14 +371,14 @@ function toggleTheme() {
     }
 }
 
-window.onscroll = function() {
-    let scrollButton = document.getElementById("btnScrollTop");
+window.addEventListener('scroll', function() {
+    const scrollButton = document.getElementById("btnScrollTop");
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         scrollButton.classList.add("show");
     } else {
         scrollButton.classList.remove("show");
     }
-};
+});
 
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -383,4 +410,5 @@ function typeWriterEffect() {
     }
 }
 
+// Start typewriter effect after a short delay
 setTimeout(typeWriterEffect, 500);
