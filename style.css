@@ -25,14 +25,14 @@ body.dark-mode {
     --md-text: #E6E0E9;
     --md-text-variant: #CAC4D0;
     
-    /* NEON NEON NEON */
+    /* NEON GLOW COLORS */
     --md-primary: #BC9CFF; /* Bright glowing neon purple */
     --md-on-primary: #0A0A0C; /* Deep black on bright colors */
     --md-primary-container: #21005D; /* Keep the Material base container */
     --md-on-primary-container: #BC9CFF; /* Neon purple on deep background */
     --md-outline: #938F99;
     
-    /* NEW: Glowing Cyberpunk Dot Matrix color for Dark Mode (More intense) */
+    /* Glowing Cyberpunk Dot Matrix color for Dark Mode */
     --bg-pattern: rgba(188, 156, 255, 0.08); 
 }
 
@@ -42,9 +42,12 @@ body.dark-mode {
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--md-bg);
+    
+    /* Cyberpunk Dot Matrix Background with Parallax Effect */
     background-image: radial-gradient(var(--bg-pattern) 1.5px, transparent 1.5px);
     background-size: 25px 25px;
     background-attachment: fixed;
+    
     color: var(--md-text);
     margin: 0;
     padding: 0;
@@ -64,7 +67,7 @@ header {
     align-items: center;
 }
 
-/* Main Card Container with Cosmic Gradient */
+/* Main Card Container with Cosmic Gradient & Parallax */
 .header-card-gradient {
     background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
     background-size: 300% 100%;
@@ -102,7 +105,7 @@ body.dark-mode .header-card-gradient {
     flex-wrap: nowrap;
 }
 
-/* Judul H1 (Solid White, Enlarged, and Ready for Glitch) */
+/* H1 Title (Solid White, Enlarged, and Ready for Glitch) */
 .header-h1-solid {
     margin: 0;
     font-size: 3.8rem;
@@ -121,14 +124,14 @@ body.dark-mode .header-card-gradient {
    ========================================== */
 /* Pseudo-element 1: The Cyan Layer (Becomes magenta on glitch-hover) */
 .header-h1-solid::before {
-    content: attr(data-text); /* Duplicate text from HTML */
+    content: attr(data-text); 
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     left: -2px; 
-    text-shadow: 2px 0 #00c6ff, -2px 0 #ff007f; /* Neon cyan and magenta layers */
+    text-shadow: 2px 0 #00c6ff, -2px 0 #ff007f; 
     color: #FFFFFF;
     background: none;
     clip-path: rect(44px, 450px, 56px, 0);
@@ -138,7 +141,7 @@ body.dark-mode .header-card-gradient {
 
 /* Pseudo-element 2: The Magenta Layer */
 .header-h1-solid::after {
-    content: attr(data-text); /* Duplicate text from HTML */
+    content: attr(data-text); 
     position: absolute;
     top: 0;
     left: 0;
@@ -261,31 +264,31 @@ body.dark-mode .header-card-gradient {
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
+    /* Smooth micro-animation curve */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
-    
     display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 
-/* NEW: Icon default transition */
+/* Icon default transition */
 .btn-action i {
     transition: transform 0.3s ease; 
 }
 
-/* NEW: Lift up effect & shadow on hover */
+/* Lift up effect & shadow on hover */
 .btn-action:hover {
     transform: translateY(-3px); 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
     filter: brightness(1.05);
 }
 
-/* NEW: Icon playful tilt on hover */
+/* Icon playful tilt on hover */
 .btn-action:hover i {
     transform: scale(1.15) rotate(-5deg); 
 }
 
-/* NEW: Neon glow for buttons in Dark Mode */
+/* Neon glow for buttons in Dark Mode */
 body.dark-mode .btn-action:hover {
     box-shadow: 0 6px 15px rgba(188, 156, 255, 0.25); 
 }
@@ -391,8 +394,7 @@ body.dark-mode .disclaimer-banner {
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    
-    /* NEW: Smooth micro-animation curve */
+    /* Smooth micro-animation curve */
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
@@ -400,12 +402,11 @@ body.dark-mode .disclaimer-banner {
     background-color: var(--md-primary-container);
     color: var(--md-on-primary-container);
     border-color: transparent;
-    
-    /* NEW: Lift effect */
+    /* Lift effect */
     transform: translateY(-2px); 
 }
 
-/* NEW: Neon glow for active/hovered filters in Dark Mode */
+/* Neon glow for active/hovered filters in Dark Mode */
 body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
     box-shadow: 0 4px 12px rgba(188, 156, 255, 0.3); 
 }
@@ -442,16 +443,14 @@ body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
     border-radius: var(--radius-card);
     padding: 24px;
     border: none;
-    
-    /* NEW: Bouncy spring transition for depth */
+    /* Bouncy spring transition for depth */
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    
     position: relative;
     overflow: hidden; 
     z-index: 1; 
 }
 
-/* NEW: Lift higher and slightly scale up on hover */
+/* Lift higher and slightly scale up on hover */
 .card:hover {
     transform: translateY(-8px) scale(1.02);
 }
