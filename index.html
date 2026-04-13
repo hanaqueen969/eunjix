@@ -4,41 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EunjiX - Custom ROM & Kernel Repository</title>
+    
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6750A4">
+    
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-<header>
-    <div class="header-card-gradient">
-        <div class="header-title">
-            <img src="asus-logo.png" alt="EunjiX Logo" class="logo">
-<div class="header-main-title">
-    <h1>EunjiX</h1>
-    <img src="eunji.png" alt="EunjiX Custom Logo" class="custom-title-logo">
-</div>
-
+    <header>
+        <div class="header-card-gradient">
+            <div class="header-main-title">
+                <img src="asus-logo.png" alt="ASUS Logo" class="logo">
+                <h1 class="header-h1-solid">EunjiX</h1>
+                <img src="eunji.png" alt="EunjiX Custom Logo" class="custom-title-logo">
+            </div>
+            <p class="subtitle">
+                <span id="typewriter-text"></span><span class="cursor">&nbsp;</span>
+            </p>
         </div>
-        <p class="subtitle">
-            <span id="typewriter-text"></span><span class="cursor">&nbsp;</span>
-        </p>
-    </div>
 
-    <div class="header-actions">
-        <button class="btn-action" onclick="openModal()">📖 How to Install</button>
-        <a href="https://sociabuzz.com/eunji/tribe" target="_blank" class="btn-action btn-donate">
-            <i class="fa-solid fa-mug-hot"></i> Support Me
-        </a>
-        <button class="btn-action btn-toggle" onclick="toggleTheme()">🌙 Dark Mode</button>
-    </div>
+        <div class="header-actions">
+            <button class="btn-action" onclick="openModal()">
+                <i class="fa-solid fa-book-open"></i> How to Install
+            </button>
+            <a href="https://sociabuzz.com/eunji/tribe" target="_blank" class="btn-action btn-donate">
+                <i class="fa-solid fa-mug-hot"></i> Support Me
+            </a>
+            <button class="btn-action btn-toggle" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon"></i> Dark Mode
+            </button>
+        </div>
 
-    <div class="disclaimer-banner">
-        <p><strong>⚠️ Disclaimer:</strong> We are not responsible for bricked devices, dead SD cards, or data loss. Flash at your own risk!</p>
-    </div>
-</header>
+        <div class="disclaimer-banner">
+            <p><strong>⚠️ Disclaimer:</strong> We are not responsible for bricked devices, dead SD cards, or data loss. Flash at your own risk!</p>
+        </div>
+    </header>
 
     <div class="search-container">
         <input type="text" id="searchInput" oninput="runFilter()" placeholder="Search device, ROM, or maintainer...">
@@ -118,10 +123,12 @@
     </footer>
 
     <button id="btnScrollTop" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
-    
+
     <a href="https://t.me/wzrdgrp" target="_blank" class="fab-community" title="Report Bug or Request ROM">
         <i class="fa-solid fa-comment-dots"></i>
     </a>
+
+    <div id="toast" class="toast">✅ Action Successful!</div>
 
     <div id="installModal" class="modal-overlay">
         <div class="modal-content">
@@ -143,8 +150,6 @@
         </div>
     </div>
 
-    <div id="toast" class="toast">✅ Action Successful!</div>
-
     <div id="aboutModal" class="modal-overlay">
         <div class="modal-content about-content">
             <div class="modal-header">
@@ -156,7 +161,6 @@
                 <h3 class="dev-name">Great Albantani</h3>
                 <p class="dev-role">Android Developer & ROM Maintainer</p>
                 <p class="dev-bio">Hi! I am a passionate developer who loves tinkering with Android. I dedicate my free time to building stable, smooth, and battery-friendly Kernel and Custom ROMs for the community.</p>
-                
                 <div class="dev-skills">
                     <span class="skill-badge">Android</span>
                     <span class="skill-badge">C++</span>
@@ -170,6 +174,5 @@
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
