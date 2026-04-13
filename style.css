@@ -68,6 +68,7 @@ header {
 .header-card-gradient {
     background: linear-gradient(to right, #6750A4, #00c6ff, #ff007f, #6750A4);
     background-size: 300% 100%;
+    background-attachment: fixed;
     animation: gradientWalk 6s infinite linear;
     color: #FFFFFF;
     max-width: 800px;
@@ -260,11 +261,33 @@ body.dark-mode .header-card-gradient {
     cursor: pointer;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* NEW: Icon default transition */
+.btn-action i {
+    transition: transform 0.3s ease; 
+}
+
+/* NEW: Lift up effect & shadow on hover */
 .btn-action:hover {
-    filter: brightness(0.95);
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    filter: brightness(1.05);
+}
+
+/* NEW: Icon playful tilt on hover */
+.btn-action:hover i {
+    transform: scale(1.15) rotate(-5deg); 
+}
+
+/* NEW: Neon glow for buttons in Dark Mode */
+body.dark-mode .btn-action:hover {
+    box-shadow: 0 6px 15px rgba(188, 156, 255, 0.25); 
 }
 
 .btn-donate {
@@ -368,13 +391,23 @@ body.dark-mode .disclaimer-banner {
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 500;
-    transition: all 0.2s;
+    
+    /* NEW: Smooth micro-animation curve */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .btn-filter.active, .btn-filter:hover {
     background-color: var(--md-primary-container);
     color: var(--md-on-primary-container);
     border-color: transparent;
+    
+    /* NEW: Lift effect */
+    transform: translateY(-2px); 
+}
+
+/* NEW: Neon glow for active/hovered filters in Dark Mode */
+body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
+    box-shadow: 0 4px 12px rgba(188, 156, 255, 0.3); 
 }
 
 .sort-dropdown {
@@ -409,14 +442,18 @@ body.dark-mode .disclaimer-banner {
     border-radius: var(--radius-card);
     padding: 24px;
     border: none;
-    transition: transform 0.2s ease;
+    
+    /* NEW: Bouncy spring transition for depth */
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    
     position: relative;
     overflow: hidden; 
     z-index: 1; 
 }
 
+/* NEW: Lift higher and slightly scale up on hover */
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
 }
 
 .card::after {
