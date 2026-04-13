@@ -292,6 +292,7 @@ function renderCards() {
     } else {
         loadMoreBtn.style.display = "none";
     }
+        apply3DEffect();
 }
 
 function loadMore() {
@@ -641,3 +642,148 @@ function clearAppCache() {
         }, 500);
     }
 }
+
+// ==========================================
+// 10. CYBERPUNK SOUND EFFECTS (Web Audio API)
+// ==========================================
+// We generate sounds dynamically so no audio files are needed!
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playBeep(freq = 600, type = 'sine', duration = 0.05) {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const oscillator = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+    
+    oscillator.type = type;
+    oscillator.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gainNode.gain.setValueAtTime(0.05, audioCtx.currentTime); // Very quiet UI click
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+    oscillator.start();
+    oscillator.stop(audioCtx.currentTime + duration);
+}
+
+// Attach sound to all existing buttons
+document.addEventListener('click', function(e) {
+    if (e.target.closest('button') || e.target.closest('.action-text') || e.target.closest('a')) {
+        playBeep(800, 'square', 0.05); // Cyber click sound
+    }
+});
+
+// ==========================================
+// 11. HOLOGRAM 3D CARD EFFECT
+// ==========================================
+function apply3DEffect() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // Mouse X inside card
+            const y = e.clientY - rect.top;  // Mouse Y inside card
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Calculate tilt (Max 8 degrees)
+            const rotateX = ((y - centerY) / centerY) * -8; 
+            const rotateY = ((x - centerX) / centerX) * 8;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // Reset to flat when mouse leaves
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+}
+
+// ==========================================
+// 12. SMART DEVICE DETECTOR
+// ==========================================
+function detectDevice() {
+    const ua = navigator.userAgent.toLowerCase();
+    const banner = document.getElementById('deviceBanner');
+    
+    let detectedDevice = "";
+    let searchQuery = "";
+
+    // Add common device code names here
+    if (ua.includes('vayu') || ua.includes('poco x3 pro')) { detectedDevice = "Poco X3 Pro (vayu)"; searchQuery = "vayu"; }
+    else if (ua.includes('sweet') || ua.includes('redmi note 10 pro')) { detectedDevice = "Redmi Note 10 Pro (sweet)"; searchQuery = "sweet"; }
+    else if (ua.includes('alioth') || ua.includes('poco f3')) { detectedDevice = "Poco F3 (alioth)"; searchQuery = "alioth"; }
+
+    if (detectedDevice !== "") {
+        const msg = currentLang === "EN" 
+            ? `🤖 System detects you are using <strong>${detectedDevice}</strong>. <span style="text-decoration:underline;cursor:pointer;color:var(--md-primary);" onclick="autoSearch('${searchQuery}')">Show me ROMs for my device!</span>`
+            : `🤖 Sistem mendeteksi Anda menggunakan <strong>${detectedDevice}</strong>. <span style="text-decoration:underline;cursor:pointer;color:var(--md-primary);" onclick="autoSearch('${searchQuery}')">Tampilkan ROM untuk HP saya!</span>`;
+        
+        banner.innerHTML = msg;
+        banner.style.display = "block";
+    }
+}
+
+function autoSearch(query) {
+    const searchInput = document.getElementById('searchInput');
+    searchInput.value = query;
+    runFilter();
+    document.getElementById('deviceBanner').style.display = "none";
+}
+
+// ==========================================
+// 13. TERMINAL EASTER EGG (TYPE 'root')
+// ==========================================
+let secretCode = "";
+window.addEventListener('keydown', (e) => {
+    // Only track alphabet keys to prevent interference
+    if(e.key.length === 1 && e.key.match(/[a-z]/i)) {
+        secretCode += e.key.toLowerCase();
+        if (secretCode.length > 4) secretCode = secretCode.substring(1, 5); // Keep last 4 chars
+        if (secretCode === "root") {
+            openTerminal();
+            secretCode = "";
+        }
+    }
+});
+
+function openTerminal() {
+    document.getElementById('cyberTerminal').style.display = "flex";
+    setTimeout(() => document.getElementById('terminalInput').focus(), 100);
+    playBeep(200, 'sawtooth', 0.5); // Deep glitch sound
+}
+
+function closeTerminal() {
+    document.getElementById('cyberTerminal').style.display = "none";
+}
+
+document.getElementById('terminalInput').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        const val = this.value.trim().toLowerCase();
+        const termBody = document.getElementById('terminalBody');
+        
+        termBody.innerHTML += `<p>> ${val}</p>`;
+        
+        if (val === "help") {
+            termBody.innerHTML += `<p class="cmd-succ">Available commands: clear, hack, reload, close</p>`;
+        } else if (val === "clear") {
+            termBody.innerHTML = `<p>Terminal cleared.</p>`;
+        } else if (val === "hack") {
+            termBody.innerHTML += `<p class="cmd-succ">Accessing mainframe... bypassing security... Welcome, Admin!</p>`;
+            playBeep(1000, 'sine', 0.2);
+        } else if (val === "reload") {
+            termBody.innerHTML += `<p class="cmd-succ">Rebooting system...</p>`;
+            setTimeout(() => window.location.reload(true), 1000);
+        } else if (val === "close" || val === "exit") {
+            closeTerminal();
+        } else if (val !== "") {
+            termBody.innerHTML += `<p class="cmd-err">Command not found: ${val}</p>`;
+        }
+        
+        this.value = "";
+        termBody.scrollTop = termBody.scrollHeight; // Auto scroll down
+    }
+});
+
+// Run Device Detector on Load
+window.addEventListener('DOMContentLoaded', detectDevice);

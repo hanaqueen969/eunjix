@@ -103,6 +103,22 @@
         <script async src="https://comments.app/js/widget.js?3" data-comments-app-website="kvWUphHw" data-limit="5" data-color="6750A4" data-dislikes="1" data-outlined="1"></script>
     </div>
 
+    <div id="deviceBanner" class="device-banner" style="display: none;"></div>
+
+    <div id="cyberTerminal" class="cyber-terminal">
+        <div class="terminal-header">
+            <span>root@eunjix:~</span>
+            <button onclick="closeTerminal()">[X]</button>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+            <p>Welcome to EunjiX OS v1.0. Type 'help' to see available commands.</p>
+        </div>
+        <div class="terminal-input-line">
+            <span>$ </span>
+            <input type="text" id="terminalInput" autocomplete="off">
+        </div>
+    </div>
+
     <footer>
         <div class="footer-content">
             <p data-i18n="footerText">&copy; 2026 EunjiX. All rights reserved.</p>

@@ -1055,3 +1055,108 @@ body.dark-mode .icon-github { color: #ffffff; }
     transform: translateY(-5px) scale(1.05);
     filter: brightness(1.1);
 }
+
+/* ==========================================
+   11. EASTER EGGS & CYBERPUNK EXTRAS
+   ========================================== */
+
+/* A. Smart Device Banner */
+.device-banner {
+    max-width: 800px;
+    margin: -10px auto 25px;
+    background: linear-gradient(45deg, var(--md-primary-container), var(--md-surface-variant));
+    color: var(--md-text);
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: slideDown 0.5s ease-out;
+    border-left: 4px solid var(--md-primary);
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* B. Hologram 3D Card Adjustments */
+.container {
+    perspective: 1000px; /* Required for 3D depth */
+}
+
+/* Override old card hover to let JS handle the smooth 3D tilt */
+.card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: box-shadow 0.3s ease; 
+    /* Removed the CSS transform transition so JS can control it smoothly */
+}
+
+/* C. Cyber Terminal (Hacker Mode) */
+.cyber-terminal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 650px;
+    height: 400px;
+    background-color: rgba(10, 10, 12, 0.95);
+    border: 2px solid #00FF33;
+    border-radius: 8px;
+    z-index: 9999;
+    flex-direction: column;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 0 40px rgba(0, 255, 51, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.terminal-header {
+    background-color: #00FF33;
+    color: #0A0A0C;
+    padding: 8px 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.terminal-header button {
+    background: none;
+    border: none;
+    color: #0A0A0C;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 15px;
+    color: #00FF33;
+    overflow-y: auto;
+    font-size: 0.95rem;
+}
+
+.terminal-body p { margin: 5px 0; }
+.terminal-body .cmd-err { color: #ff007f; }
+.terminal-body .cmd-succ { color: #00c6ff; }
+
+.terminal-input-line {
+    display: flex;
+    padding: 15px;
+    color: #00FF33;
+    border-top: 1px solid rgba(0, 255, 51, 0.3);
+}
+
+.terminal-input-line input {
+    background: transparent;
+    border: none;
+    color: #00FF33;
+    font-family: inherit;
+    font-size: 1rem;
+    flex: 1;
+    outline: none;
+    margin-left: 10px;
+}
