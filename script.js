@@ -412,3 +412,43 @@ function typeWriterEffect() {
 
 // Start typewriter effect after a short delay
 setTimeout(typeWriterEffect, 500);
+
+// ==========================================
+// 9. LANGUAGE TRANSLATION (i18n)
+// ==========================================
+let currentLang = "EN"; // Default website language
+
+// Dictionary for UI Translation
+const uiTranslations = {
+    "EN": {
+        "btnLang": '<i class="fa-solid fa-globe"></i> ID',
+        "searchPlaceholder": "Search device, ROM, or maintainer...",
+        "toastMessage": "✅ Language changed to English!"
+    },
+    "ID": {
+        "btnLang": '<i class="fa-solid fa-globe"></i> EN',
+        "searchPlaceholder": "Cari perangkat, ROM, atau maintainer...",
+        "toastMessage": "✅ Bahasa diubah ke Indonesia!"
+    }
+};
+
+function toggleLanguage() {
+    // Switch the active language state
+    currentLang = currentLang === "EN" ? "ID" : "EN";
+    
+    // 1. Update the language button text
+    document.getElementById("btnLang").innerHTML = uiTranslations[currentLang]["btnLang"];
+    
+    // 2. Update the search bar placeholder
+    document.getElementById("searchInput").placeholder = uiTranslations[currentLang]["searchPlaceholder"];
+    
+    // 3. Show a notification
+    showToast(uiTranslations[currentLang]["toastMessage"]);
+    
+    /* NOTE FOR DEVELOPER: 
+       To translate other elements (like buttons or titles), 
+       add an ID to the HTML element (e.g., id="installBtn"),
+       add the translation strings to the dictionary above, 
+       and update them here using document.getElementById().innerHTML 
+    */
+}
