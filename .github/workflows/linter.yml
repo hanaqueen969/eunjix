@@ -1,0 +1,36 @@
+name: EunjiX Code Checker 🕵️‍♂️
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  check-code:
+    name: Lint & Syntax Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 🔍 Check JavaScript Syntax
+        run: |
+          echo "Checking script.js..."
+          node --check script.js
+
+      - name: 📦 Check JSON Validity
+        run: |
+          echo "Checking format data.json..."
+          npx jsonlint -q data.json
+
+      - name: 🎨 Check HTML & CSS (Prettier)
+        run: |
+          echo "Checking neatness of structure..."
+          npx prettier --check "index.html" "style.css"
