@@ -134,7 +134,7 @@ const uiTranslations = {
         "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️",
         "btnClear": '<i class="fa-solid fa-broom"></i> Bersihkan',
         "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?",
-        "cardDate": "<span>📅 Tanggal</span>"
+        "cardDate": "<span>📅 Tanggal Rilis</span>"
     }
 };
 
@@ -261,7 +261,7 @@ function renderCards() {
                     ${safetyHtml}
                 </div>
                 <div class="detail-item">${dict["cardDevice"]} <strong title="${rom.device}">${rom.device}</strong></div>
-                <div class="detail-item">${dict["cardDate"]} <strong>${rom.date}</strong></div>
+                <div class="detail-item">${dict["cardDate"]} <strong>${rom.date || "-"}</strong></div>
                 <div class="detail-item">${dict["cardDetail"]} <strong>${rom.category}</strong></div>
                 <div class="detail-item">${dict["cardMaintainer"]} <strong>${rom.maintainer}</strong></div>
                 <div class="detail-item">${dict["cardSize"]} <strong>${rom.size}</strong></div>
