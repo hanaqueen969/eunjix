@@ -14,6 +14,7 @@
     --md-outline: #79747E;
     --radius-card: 24px;
     --radius-pill: 50px;
+    --bg-pattern: rgba(103, 80, 164, 0.08);
 }
 
 body.dark-mode {
@@ -27,6 +28,7 @@ body.dark-mode {
     --md-primary-container: #4F378B;
     --md-on-primary-container: #EADDFF;
     --md-outline: #938F99;
+    --bg-pattern: rgba(208, 188, 255, 0.05);
 }
 
 /* ==========================================
@@ -35,6 +37,13 @@ body.dark-mode {
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--md-bg);
+    background-image: radial-gradient(var(--bg-pattern) 1.5px, transparent 1.5px);
+    background-size: 25px 25px;
+    background-attachment: fixed;
+    color: var(--md-text);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
     color: var(--md-text);
     margin: 0;
     padding: 0;
