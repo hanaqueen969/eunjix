@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eunjix-cache-v41';
+const CACHE_NAME = 'eunjix-cache-v42';
 
 const urlsToCache = [
     '/',
@@ -7,6 +7,9 @@ const urlsToCache = [
     '/script.js',
     '/data.json',
     '/logo.png'
+    '/eunji.png',
+    '/asus-logo.png',
+    '/about.jpeg'
 ];
 
 self.addEventListener('install', function(event) {
