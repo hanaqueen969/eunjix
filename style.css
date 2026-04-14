@@ -339,6 +339,22 @@ body.dark-mode .btn-clear:hover {
     transform: scale(1.15) rotate(-5deg); 
 }
 
+.btn-action:active {
+    transform: scale(0.92) translateY(2px) !important;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+@keyframes themeSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(180deg) scale(1.4); }
+    100% { transform: rotate(360deg) scale(1); }
+}
+
+.icon-spin {
+    display: inline-block;
+    animation: themeSpin 0.5s ease-in-out;
+}
+
 /* Neon glow for buttons in Dark Mode */
 body.dark-mode .btn-action:hover {
     box-shadow: 0 6px 15px rgba(188, 156, 255, 0.25); 

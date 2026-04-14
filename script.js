@@ -488,15 +488,22 @@ function toggleTheme() {
     document.body.classList.toggle("dark-mode");
     const button = document.querySelector(".btn-toggle");
     const dict = uiTranslations[currentLang];
-    
+
     // Save theme preference to local storage
     const isDarkMode = document.body.classList.contains("dark-mode");
     localStorage.setItem("eunjix_theme", isDarkMode ? "dark" : "light");
-    
+
+    // Update teks & ikon
     if (isDarkMode) {
         button.innerHTML = dict["btnThemeLight"];
     } else {
         button.innerHTML = dict["btnThemeDark"];
+    }
+
+    const newIcon = button.querySelector("i");
+    if (newIcon) {
+        newIcon.classList.add("icon-spin");
+        setTimeout(() => newIcon.classList.remove("icon-spin"), 500);
     }
 }
 
