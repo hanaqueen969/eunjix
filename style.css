@@ -1057,78 +1057,58 @@ body.dark-mode .icon-github { color: #ffffff; }
 }
 
 /* ==========================================
-   11. LIQUID GLASS STYLE (CYBER-VISCOUS)
+   11. LIQUID GLASS + LASER (OPTIMIZED)
    ========================================== */
-
-/* The base class for the Liquid Glass effect */
-.liquid-glass {
-    position: relative;
-    overflow: hidden; /* Important: Keep the liquid glare inside */
-    background-color: transparent !important; /* Let backdrop blur show */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: box-shadow 0.4s ease, border-color 0.4s ease;
+.card.liquid-glass {
+    background-color: transparent !important;
+    transform: translateZ(0);
+    will-change: transform;
 }
 
-/* 1. The Glass Base: Frosted blur effect */
-.liquid-glass::after {
+.card.liquid-glass::after {
     content: '';
     position: absolute;
-    inset: 3px; /* Slightly inner to leave space for border */
-    background-color: rgba(18, 18, 22, 0.5); /* Semi-transparent dark surface */
-    border-radius: calc(var(--radius-card) - 3px);
-    backdrop-filter: blur(12px); /* Core glassmorphism element */
-    -webkit-backdrop-filter: blur(12px);
-    z-index: -2; /* Place behind content */
-}
+    inset: 3px; 
 
-/* 2. The Liquid Layer: Flowing iridescent glare */
-.liquid-glass::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    
-    /* Iridescent cyber-liquid gradient (Neon purple to Cyan) */
-    background: linear-gradient(
+    background-color: rgba(20, 20, 25, 0.65); 
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    background-image: linear-gradient(
         135deg,
         rgba(188, 156, 255, 0) 20%,
-        rgba(188, 156, 255, 0.15) 35%, /* Glowing purple drop */
+        rgba(188, 156, 255, 0.1) 35%,
         rgba(188, 156, 255, 0) 50%,
-        rgba(0, 198, 255, 0.15) 65%,  /* Glowing cyan drop */
+        rgba(0, 198, 255, 0.1) 65%,
         rgba(0, 198, 255, 0) 80%
     );
-    
-    background-size: 150% 150%;
-    z-index: -1; /* Place between glass and content */
-    opacity: 0.6; /* Subtle effect */
-    animation: liquidFlow 6s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+    border-radius: calc(var(--radius-card) - 3px);
+    z-index: -1;
+
+    animation: liquidFlow 8s ease-in-out infinite alternate;
+    transition: background-color 0.3s ease;
 }
 
-/* 3. The Interactive Liquid Glare on Hover */
-.liquid-glass:hover::before {
-    opacity: 1; /* Make liquid brighter when hovered */
-    animation: liquidFlowHover 2s ease-in-out infinite alternate;
+.card.liquid-glass:hover::after {
+    background-color: rgba(25, 25, 30, 0.85);
+    animation: liquidFlowHover 3s ease-in-out infinite alternate;
 }
 
-/* Neon-liquid border on Dark Mode */
-body.dark-mode .liquid-glass {
-    border: 1px solid rgba(188, 156, 255, 0.1) !important;
+body.dark-mode .card.liquid-glass {
+    border: 1px solid rgba(188, 156, 255, 0.15);
+}
+body.dark-mode .card.liquid-glass:hover {
+    border-color: rgba(188, 156, 255, 0.5);
+    box-shadow: 0 0 25px rgba(188, 156, 255, 0.2);
 }
 
-body.dark-mode .liquid-glass:hover {
-    border-color: rgba(188, 156, 255, 0.6) !important;
-    box-shadow: 0 0 25px rgba(188, 156, 255, 0.3);
-}
-
-/* Animations for the liquid flow effect */
 @keyframes liquidFlow {
-    0% { background-position: 0% 0%; transform: rotate(-5deg) scale(1); }
-    100% { background-position: 100% 100%; transform: rotate(5deg) scale(1.1); }
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
 }
-
 @keyframes liquidFlowHover {
-    0% { background-position: 100% 100%; transform: rotate(10deg) scale(1.1); }
-    100% { background-position: 0% 0%; transform: rotate(-10deg) scale(1.2); }
+    0% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
 }
