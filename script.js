@@ -351,9 +351,9 @@ function copyLink(url) {
 }
 
 function copyCardLink(hashId) {
-    const cardUrl = window.location.origin + window.location.pathname + '#' + hashId;
+    const cardUrl = window.location.origin + '/api/share?id=' + hashId;
     navigator.clipboard.writeText(cardUrl).then(function() { 
-        showToast(uiTranslations[currentLang]["toastDirect"]); 
+    showToast(uiTranslations[currentLang]["toastDirect"]); 
     });
 }
 
