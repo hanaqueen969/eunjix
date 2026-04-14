@@ -250,7 +250,7 @@ function renderCards() {
 
         // Card HTML Structure
         const cardHTML = `
-            <div class="card liquid-glass" id="${rom.md5}">
+            <div class="card cyber-matrix" id="${rom.md5}">
                 <span class="badge ${badgeClass}">${rom.type}</span>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-top: 5px;">
                     <h2 title="${rom.name}" style="margin-top: 0; flex: 1;">${rom.name}</h2>
