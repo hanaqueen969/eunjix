@@ -1057,58 +1057,47 @@ body.dark-mode .icon-github { color: #ffffff; }
 }
 
 /* ==========================================
-   11. LIQUID GLASS + LASER (OPTIMIZED)
+   11. CYBER-MATRIX SCANLINES (SUPER LIGHTWEIGHT)
    ========================================== */
-.card.liquid-glass {
+
+/* 1. Base Kartu: Border neon yang halus */
+.card.cyber-matrix {
     background-color: transparent !important;
-    transform: translateZ(0);
-    will-change: transform;
+    border: 1px solid rgba(188, 156, 255, 0.1);
 }
 
-.card.liquid-glass::after {
+/* 2. Permukaan Dalam: Pola Garis CRT/Terminal (Sangat Ringan) */
+.card.cyber-matrix::after {
     content: '';
     position: absolute;
     inset: 3px; 
-
-    background-color: rgba(20, 20, 25, 0.65); 
-
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-
-    background-image: linear-gradient(
-        135deg,
-        rgba(188, 156, 255, 0) 20%,
-        rgba(188, 156, 255, 0.1) 35%,
-        rgba(188, 156, 255, 0) 50%,
-        rgba(0, 198, 255, 0.1) 65%,
-        rgba(0, 198, 255, 0) 80%
+    background-color: var(--md-surface);
+    
+    /* Pola garis horizontal tipis (0% beban GPU) */
+    background-image: repeating-linear-gradient(
+        transparent 0px,
+        transparent 2px,
+        rgba(188, 156, 255, 0.03) 3px,
+        rgba(188, 156, 255, 0.03) 4px
     );
-    background-size: 200% 200%;
     border-radius: calc(var(--radius-card) - 3px);
     z-index: -1;
-
-    animation: liquidFlow 8s ease-in-out infinite alternate;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, background-image 0.3s ease;
 }
 
-.card.liquid-glass:hover::after {
-    background-color: rgba(25, 25, 30, 0.85);
-    animation: liquidFlowHover 3s ease-in-out infinite alternate;
+/* 3. Reaksi saat di-hover: Scanline berubah warna jadi Cyan */
+.card.cyber-matrix:hover::after {
+    background-color: var(--md-surface-variant);
+    background-image: repeating-linear-gradient(
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 198, 255, 0.05) 3px,
+        rgba(0, 198, 255, 0.05) 4px
+    );
 }
 
-body.dark-mode .card.liquid-glass {
-    border: 1px solid rgba(188, 156, 255, 0.15);
-}
-body.dark-mode .card.liquid-glass:hover {
-    border-color: rgba(188, 156, 255, 0.5);
-    box-shadow: 0 0 25px rgba(188, 156, 255, 0.2);
-}
-
-@keyframes liquidFlow {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-@keyframes liquidFlowHover {
-    0% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
+/* 4. Efek Glow di Dark Mode saat di-hover */
+body.dark-mode .card.cyber-matrix:hover {
+    border-color: rgba(188, 156, 255, 0.4);
+    box-shadow: 0 0 20px rgba(188, 156, 255, 0.15);
 }
