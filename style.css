@@ -484,6 +484,8 @@ body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+
+    align-items: start; 
 }
 
 /* ==========================================
