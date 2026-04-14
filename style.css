@@ -1065,6 +1065,7 @@ body.dark-mode .icon-github { color: #ffffff; }
     position: relative;
     overflow: hidden; /* Important: Keep the liquid glare inside */
     background-color: transparent !important; /* Let backdrop blur show */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
