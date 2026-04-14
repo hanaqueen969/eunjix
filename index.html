@@ -68,8 +68,12 @@
         </div>
     </header>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" oninput="runFilter()" placeholder="Search device, ROM, or maintainer...">
+        <div class="search-container">
+        <div class="search-box-cyber">
+            <input type="text" id="searchInput" oninput="runFilter()" placeholder="Search device, ROM, or maintainer...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
         <div class="filter-sort-wrapper">
             <div class="filter-buttons">
                 <button class="btn-filter active" onclick="changeCategory(this, 'All')" data-i18n="filterAll">All</button>
