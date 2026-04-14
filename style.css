@@ -1073,12 +1073,12 @@ body.dark-mode .icon-github { color: #ffffff; }
     inset: 3px; 
     background-color: var(--md-surface);
     
-    /* Pola garis horizontal tipis (0% beban GPU) */
+    /* DITINGKATKAN: Opacity dinaikkan dari 3% menjadi 15% (0.15) agar garis lebih tegas */
     background-image: repeating-linear-gradient(
         transparent 0px,
         transparent 2px,
-        rgba(188, 156, 255, 0.03) 3px,
-        rgba(188, 156, 255, 0.03) 4px
+        rgba(188, 156, 255, 0.15) 3px,
+        rgba(188, 156, 255, 0.15) 4px
     );
     border-radius: calc(var(--radius-card) - 3px);
     z-index: -1;
@@ -1088,16 +1088,12 @@ body.dark-mode .icon-github { color: #ffffff; }
 /* 3. Reaksi saat di-hover: Scanline berubah warna jadi Cyan */
 .card.cyber-matrix:hover::after {
     background-color: var(--md-surface-variant);
+    
+    /* DITINGKATKAN: Opacity Cyan dinaikkan menjadi 25% (0.25) agar menyala terang saat disentuh */
     background-image: repeating-linear-gradient(
         transparent 0px,
         transparent 2px,
-        rgba(0, 198, 255, 0.05) 3px,
-        rgba(0, 198, 255, 0.05) 4px
+        rgba(0, 198, 255, 0.25) 3px,
+        rgba(0, 198, 255, 0.25) 4px
     );
-}
-
-/* 4. Efek Glow di Dark Mode saat di-hover */
-body.dark-mode .card.cyber-matrix:hover {
-    border-color: rgba(188, 156, 255, 0.4);
-    box-shadow: 0 0 20px rgba(188, 156, 255, 0.15);
 }

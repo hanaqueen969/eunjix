@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eunjix-cache-v40';
+const CACHE_NAME = 'eunjix-cache-v41';
 
 const urlsToCache = [
     '/',
