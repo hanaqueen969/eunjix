@@ -1,5 +1,44 @@
 [
     {
+        "name": "lineage-rev-17.1-X00TD-UNOFFICIAL",
+        "date": "2026-04-18",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 10",
+        "maintainer": "EunjiX",
+        "size": "785 MB",
+        "downloadLink": "https://drive.google.com/uc?id=1S802YwwCnsYkhQ4ectj8zvFBpXbSxtua&export=download",
+        "md5": "69a0d81683cbcca0a58a7c110154cdd5",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source side",
+            "Add dolby atmos",
+            "Disable dynamic fps",
+            "Improved battery backup"
+        ]
+    },
+    {
+        "name": "axion-2.5-REVERIE-X00TD-UNOFFICIAL-VANILLA",
+        "date": "2026-04-12",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "1.8 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1X6jYRXRj2RM1BGo55ukravpq3Hx8HhFz&export=download",
+        "md5": "c95f99e21fa59b9ecab5b84f0a2ede59",
+        "gapps": false,
+        "safetynet": true,
+        "changelog": [
+            "Sync with latest source side",
+            "Fix auto brightness",
+            "Optimize thermal vadc",
+            "Update LMKD props",
+            "Improved battery backup"
+        ]
+    },
+    {
         "name": "Lunaris-AOSP-X00TD-Community-3.9-VANILLA",
         "date": "2026-04-13",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
@@ -158,7 +197,7 @@
         ]
     },
     {
-        "name": "lineage-17.1-UNOFFICIAL",
+        "name": "lineage-17.1-X00TD-UNOFFICIAL",
         "date": "2026-03-05",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
         "type": "ROM",
