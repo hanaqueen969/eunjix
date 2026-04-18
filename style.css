@@ -1165,3 +1165,28 @@ body.dark-mode .icon-github { color: #ffffff; }
         rgba(0, 198, 255, 0.25) 4px
     );
 }
+
+/* ==========================================
+   12. MOBILE PERFORMANCE OPTIMIZATION (60FPS SCROLL)
+   ========================================== */
+
+.card {
+    will-change: transform;
+    transform: translateZ(0); 
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important; /* Latar belakang ikut menggulir normal */
+    }
+    
+    .header-card-gradient {
+        background-attachment: scroll !important; 
+    }
+
+    body.dark-mode .header-card-gradient {
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
+    }
+}

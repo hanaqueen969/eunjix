@@ -562,14 +562,21 @@ function toggleLanguage() {
     applyTranslationUI(true, false);
 }
 
+let isScrolling = false;
 window.addEventListener('scroll', function() {
-    const scrollButton = document.getElementById("btnScrollTop");
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        scrollButton.classList.add("show");
-    } else {
-        scrollButton.classList.remove("show");
+    if (!isScrolling) {
+        window.requestAnimationFrame(function() {
+            const scrollButton = document.getElementById("btnScrollTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollButton.classList.add("show");
+            } else {
+                scrollButton.classList.remove("show");
+            }
+            isScrolling = false;
+        });
+        isScrolling = true;
     }
-});
+}, { passive: true });
 
 function scrollToTop() { 
     window.scrollTo({ top: 0, behavior: "smooth" }); 
