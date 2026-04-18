@@ -5,17 +5,13 @@ module.exports = function handler(req, res) {
     const baseUrl = `${protocol}://${host}`;
 
     try {
-        // 1. CARA SUPER AMAN: Memaksa Vercel mengimpor data.json langsung ke jantung server
         const romData = require('../data.json');
-
-        // Cari ROM berdasarkan MD5
         const rom = romData.find(r => r.md5 === id);
 
         if (!rom) {
             return res.status(404).send("Error 404: ROM Not Found. Tautan mungkin kadaluarsa.");
         }
 
-        // 2. JEBAKAN BOT: Buang meta refresh, biarkan JS bekerja untuk manusia!
         const html = `
         <!DOCTYPE html>
         <html lang="en">

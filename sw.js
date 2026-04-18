@@ -1,4 +1,4 @@
-const CACHE_NAME = 'eunjix-cache-v50';
+const CACHE_NAME = 'eunjix-cache-v51';
 
 const urlsToCache = [
     '/',
@@ -6,7 +6,7 @@ const urlsToCache = [
     '/style.css',
     '/script.js',
     '/data.json',
-    '/logo.png'
+    '/logo.png',
     '/eunji.png',
     '/asus-logo.png',
     '/about.jpeg'
