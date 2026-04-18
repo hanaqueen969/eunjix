@@ -392,6 +392,88 @@ body.dark-mode .btn-donate {
 /* ==========================================
    5. BANNER & SEARCH
    ========================================== */
+/* ==========================================
+   5.5 DEVICE QUICK SELECTOR (HOLOGRAM PANELS)
+   ========================================== */
+.device-selector-container {
+    margin-bottom: 25px;
+}
+
+.device-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.device-card {
+    background-color: var(--md-surface-variant);
+    border: 1px solid var(--md-outline);
+    border-radius: 16px;
+    padding: 15px 10px;
+    cursor: pointer;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.device-card img {
+    width: 45px;
+    height: auto;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+    transition: transform 0.3s ease;
+}
+
+.device-card span {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--md-text);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.device-card small {
+    font-size: 0.7rem;
+    color: var(--md-primary);
+    margin-top: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.device-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--md-primary);
+    background-color: var(--md-surface);
+}
+
+.device-card:hover img {
+    transform: scale(1.15) translateY(-2px);
+}
+
+.device-card:active {
+    transform: scale(0.92) translateY(2px);
+}
+
+body.dark-mode .device-card {
+    background-color: rgba(18, 18, 22, 0.6);
+    border-color: rgba(188, 156, 255, 0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+body.dark-mode .device-card:hover {
+    border-color: #00c6ff;
+    box-shadow: 0 5px 20px rgba(0, 198, 255, 0.15), inset 0 0 10px rgba(0, 198, 255, 0.05);
+}
+
+body.dark-mode .device-card:hover small {
+    color: #00c6ff;
+    text-shadow: 0 0 8px #00c6ff;
+}
+
 .disclaimer-banner {
     max-width: 650px;
     margin: 30px auto 0;

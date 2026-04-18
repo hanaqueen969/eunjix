@@ -73,7 +73,8 @@ const uiTranslations = {
         "errorFetch": "Sorry, failed to load data from data.json. ⚠️",
         "btnClear": '<i class="fa-solid fa-broom"></i> Cache',
         "confirmClear": "Are you sure you want to clear the app cache and reload?",
-        "cardDate": "<span>📅 Date</span>"
+        "cardDate": "<span>📅 Date</span>",
+        "deviceSelectTitle": "📱 Quick Select Device"
     },
     "ID": {
         "btnLang": '<i class="fa-solid fa-globe"></i> EN',
@@ -134,7 +135,8 @@ const uiTranslations = {
         "errorFetch": "Maaf, gagal memuat data dari data.json. ⚠️",
         "btnClear": '<i class="fa-solid fa-broom"></i> Bersihkan',
         "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?",
-        "cardDate": "<span>📅 Tanggal Rilis</span>"
+        "cardDate": "<span>📅 Tanggal Rilis</span>",
+        "deviceSelectTitle": "📱 Pilih Cepat Perangkat"
     }
 };
 
@@ -479,6 +481,20 @@ function runFilter() {
     
     initialLoad = false;
     renderCards();
+}
+
+function quickSearch(keyword) {
+    const searchInput = document.getElementById("searchInput");
+
+    searchInput.value = keyword; 
+
+    searchInput.focus(); 
+
+    runFilter(); 
+
+    setTimeout(() => {
+        document.getElementById("romContainer").scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
 }
 
 // ==========================================
