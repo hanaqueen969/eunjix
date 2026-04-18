@@ -1400,7 +1400,14 @@ body.dark-mode .footer-links a:hover {
 .icon-github:hover { color: #24292e; }
 body.dark-mode .icon-github:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
 
-/* Bagian Bawah (Copyright) */
+.icon-rss:hover { 
+    color: #f26522; 
+}
+body.dark-mode .icon-rss:hover { 
+    color: #ff7b00; 
+    text-shadow: 0 0 10px rgba(255, 123, 0, 0.6); 
+}
+
 .footer-bottom {
     text-align: center;
     padding: 20px;
