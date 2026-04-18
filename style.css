@@ -1254,21 +1254,17 @@ body.dark-mode .icon-github { color: #ffffff; }
 /* ==========================================
    11. CYBER-MATRIX SCANLINES (SUPER LIGHTWEIGHT)
    ========================================== */
-
-/* 1. Base Kartu: Border neon yang halus */
 .card.cyber-matrix {
     background-color: transparent !important;
     border: 1px solid rgba(188, 156, 255, 0.1);
 }
 
-/* 2. Permukaan Dalam: Pola Garis CRT/Terminal (Sangat Ringan) */
 .card.cyber-matrix::after {
     content: '';
     position: absolute;
     inset: 3px; 
     background-color: var(--md-surface);
-    
-    /* DITINGKATKAN: Opacity dinaikkan dari 3% menjadi 15% (0.15) agar garis lebih tegas */
+
     background-image: repeating-linear-gradient(
         transparent 0px,
         transparent 2px,
@@ -1280,11 +1276,9 @@ body.dark-mode .icon-github { color: #ffffff; }
     transition: background-color 0.3s ease, background-image 0.3s ease;
 }
 
-/* 3. Reaksi saat di-hover: Scanline berubah warna jadi Cyan */
 .card.cyber-matrix:hover::after {
     background-color: var(--md-surface-variant);
-    
-    /* DITINGKATKAN: Opacity Cyan dinaikkan menjadi 25% (0.25) agar menyala terang saat disentuh */
+
     background-image: repeating-linear-gradient(
         transparent 0px,
         transparent 2px,
@@ -1306,7 +1300,7 @@ body.dark-mode .icon-github { color: #ffffff; }
 
 @media (max-width: 768px) {
     body {
-        background-attachment: scroll !important; /* Latar belakang ikut menggulir normal */
+        background-attachment: scroll !important;
     }
     
     .header-card-gradient {
@@ -1316,4 +1310,108 @@ body.dark-mode .icon-github { color: #ffffff; }
     body.dark-mode .header-card-gradient {
         box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
     }
+}
+
+/* ==========================================
+   13. CYBER-FOOTER (KELAS DEWA)
+   ========================================== */
+.cyber-footer {
+    position: relative;
+    margin-top: 60px;
+    padding-top: 50px;
+    background-color: rgba(18, 18, 22, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.footer-glow-line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--md-primary), #00c6ff, transparent);
+    box-shadow: 0 0 15px var(--md-primary);
+}
+
+.footer-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.footer-brand p {
+    color: var(--md-text-variant);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+.footer-links h3, .footer-socials h3 {
+    color: var(--md-text);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-links a {
+    display: block;
+    color: var(--md-text-variant);
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--md-primary);
+    transform: translateX(8px);
+}
+
+body.dark-mode .footer-links a:hover {
+    color: #00c6ff;
+    text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--md-text-variant);
+    font-size: 1.8rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    transform: translateY(-8px) scale(1.15);
+}
+
+.icon-about:hover { color: var(--md-primary); }
+.icon-telegram:hover { color: #24A1DE; }
+.icon-github:hover { color: #24292e; }
+body.dark-mode .icon-github:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+
+/* Bagian Bawah (Copyright) */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(188, 156, 255, 0.1);
+    color: var(--md-text-variant);
+    font-size: 0.85rem;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 600px) {
+    .footer-grid { text-align: center; }
+    .social-icons { justify-content: center; }
+    .footer-links a:hover { transform: translateY(-3px); }
 }

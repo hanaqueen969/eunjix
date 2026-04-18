@@ -74,7 +74,13 @@ const uiTranslations = {
         "btnClear": '<i class="fa-solid fa-broom"></i> Cache',
         "confirmClear": "Are you sure you want to clear the app cache and reload?",
         "cardDate": "<span>📅 Date</span>",
-        "deviceSelectTitle": "📱 Quick Select Device"
+        "deviceSelectTitle": "📱 Quick Select Device",
+        "footerDesc": "Next-Gen Custom ROM & Kernel Repository. Fast, smooth, and cyber-secured.",
+        "footerLegalTitle": "Legal & Info",
+        "footerSocialTitle": "Connect",
+        "footerDMCA": "DMCA Disclaimer",
+        "footerPrivacy": "Privacy Policy",
+        "footerTerms": "Terms of Service"
     },
     "ID": {
         "btnLang": '<i class="fa-solid fa-globe"></i> EN',
@@ -136,7 +142,13 @@ const uiTranslations = {
         "btnClear": '<i class="fa-solid fa-broom"></i> Bersihkan',
         "confirmClear": "Apakah Anda yakin ingin membersihkan cache aplikasi dan memuat ulang?",
         "cardDate": "<span>📅 Tanggal Rilis</span>",
-        "deviceSelectTitle": "📱 Pilih Cepat Perangkat"
+        "deviceSelectTitle": "📱 Pilih Cepat Perangkat",
+        "footerDesc": "Repositori Custom ROM & Kernel Generasi Berikutnya. Cepat, mulus, dan aman.",
+        "footerLegalTitle": "Legal & Info",
+        "footerSocialTitle": "Koneksi",
+        "footerDMCA": "Sangkalan DMCA",
+        "footerPrivacy": "Kebijakan Privasi",
+        "footerTerms": "Ketentuan Layanan"
     }
 };
 
