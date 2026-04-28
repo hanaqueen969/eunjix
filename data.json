@@ -1,5 +1,27 @@
 [
     {
+        "name": "TheOneMemory v4.19.325-cip131",
+        "date": "2026-04-28",
+        "device": "Asus Zenfone Max Pro M2 (X01BD)",
+        "type": "Kernel",
+        "category": "Kernel",
+        "maintainer": "EunjiX",
+        "size": "17 MB",
+        "downloadLink": "https://www.pling.com/p/2259777",
+        "md5": "509d2d5aa04ab2ad85b3fdbdbaef14d8",
+        "changelog": [
+            "Merged tag v4.19.325-cip131",
+            "Optimize fast charging profile",
+            "Bypass JEITA and lock fast charge current to 2.4A",
+            "Optimized memcpy",
+            "Optimized memmove",
+            "Optimized memset",
+            "Optimized memcmp",
+            "Optimized CPU scheduler",
+            "Fixed deep sleep issues"
+        ]
+    },
+    {
         "name": "lineage-rev-17.1-X00TD-UNOFFICIAL",
         "date": "2026-04-18",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
