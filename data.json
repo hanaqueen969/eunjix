@@ -19,23 +19,25 @@
         ]
     },
     {
-        "name": "axion-2.5-REVERIE-X00TD-UNOFFICIAL-VANILLA",
-        "date": "2026-04-12",
+        "name": "TheOneMemory v4.19.325-cip131",
+        "date": "2026-04-28",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
-        "type": "ROM",
-        "category": "Android 16",
+        "type": "Kernel",
+        "category": "Kernel",
         "maintainer": "EunjiX",
-        "size": "1.8 GB",
-        "downloadLink": "https://drive.google.com/uc?id=1X6jYRXRj2RM1BGo55ukravpq3Hx8HhFz&export=download",
-        "md5": "c95f99e21fa59b9ecab5b84f0a2ede59",
-        "gapps": false,
-        "safetynet": true,
+        "size": "17 MB",
+        "downloadLink": "https://www.pling.com/p/2259777",
+        "md5": "e3ab6763aa85ee1955962434583600f9",
         "changelog": [
-            "Sync with latest source side",
-            "Fix auto brightness",
-            "Optimize thermal vadc",
-            "Update LMKD props",
-            "Improved battery backup"
+            "Merged tag v4.19.325-cip131",
+            "Optimize fast charging profile",
+            "Bypass JEITA and lock fast charge current to 2.4A",
+            "Optimized memcpy",
+            "Optimized memmove",
+            "Optimized memset",
+            "Optimized memcmp",
+            "Optimized CPU scheduler",
+            "Fixed deep sleep issues"
         ]
     },
     {
@@ -251,22 +253,6 @@
             "Updated upstream kernel to 4.19.325-st14",
             "Fixed Bluetooth audio stutter",
             "Improved battery backup"
-        ]
-    },
-    {
-        "name": "TheOneMemory Kernel",
-        "date": "2026-03-24",
-        "device": "Asus Zenfone Max Pro M1 (X00TD)",
-        "type": "Kernel",
-        "category": "Kernel",
-        "maintainer": "EunjiX",
-        "size": "17 MB",
-        "downloadLink": "https://www.pling.com/p/2259777",
-        "md5": "8a9c2b4d6e8f0a1c3b5d7e9f2a4c6b8d",
-        "changelog": [
-            "Merged latest Linux upstream CIP st13",
-            "Optimized CPU scheduler",
-            "Fixed deep sleep issues"
         ]
     },
     {
