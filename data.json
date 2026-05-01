@@ -9,6 +9,8 @@
         "size": "2 GB",
         "downloadLink": "https://drive.google.com/uc?id=1-IQ9twugbm-i_hZmwi5GxXAVXcZmYTy5&export=download",
         "md5": "b0adb9406322595d617767d69213d7b3",
+        "gapps": true,
+        "safetynet": true,
         "changelog": [
             "Sync with latest source side",
             "Initial unoffical build",
