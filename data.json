@@ -1,5 +1,21 @@
 [
     {
+        "name": "axion-2.6-QUASIS-UNOFFICIAL-CORE",
+        "date": "2026-05-01",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "2 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1-IQ9twugbm-i_hZmwi5GxXAVXcZmYTy5&export=download",
+        "md5": "b0adb9406322595d617767d69213d7b3",
+        "changelog": [
+            "Sync with latest source side",
+            "Initial unoffical build",
+            "Build with new partition scheme"
+        ]
+    },
+    {
         "name": "TheOneMemory v4.19.325-cip131",
         "date": "2026-04-28",
         "device": "Asus Zenfone Max Pro M2 (X01BD)",
