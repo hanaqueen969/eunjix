@@ -38,12 +38,30 @@ const uiTranslations = {
         "modalGuideTitle": "📖 Flashing Guide",
         "modalGuideWarn": "<strong>⚠️ Warning:</strong> Backup your data before flashing!",
         "modalGuideSteps": `
-            <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
-            <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
-            <li>Flash the ROM zip file.</li>
-            <li>Flash the GApps zip file (if Vanilla build).</li>
-            <li>Format Data (if changing ROM from FBE base).</li>
-            <li>Reboot System and enjoy!</li>
+            <h4 style="color: var(--md-primary); margin-top: 15px; margin-bottom: 5px;">A. Standard Method</h4>
+            <ol>
+                <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
+                <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                <li>Flash the ROM zip file.</li>
+                <li>Flash the GApps zip file (if Vanilla).</li>
+                <li>Format Data (if changing ROM base).</li>
+                <li>Reboot System and enjoy!</li>
+            </ol>
+            
+            <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Repartition Method</h4>
+            <ol>
+                <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
+                <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                <li>Format Data (type 'yes').</li>
+                <li>Flash Custom Recovery with (repartition supported).</li>
+                <li>Flash the Repartition Script zip.</li>
+                <li style="color: #ff007f;"><strong>Reboot to Recovery</strong> once again.</li>
+                <li>Flash the Repartition Script zip.</li>
+                <li style="color: #ff007f;"><strong>Reboot to Recovery</strong> once again.</li>
+                <li>Wipe Data, Cache, Product, System, System_Ext, Vendor and Dalvik Cache.</li>
+                <li>Flash the ROM zip files.</li>
+                <li>Reboot System.</li>
+            </ol>
         `,
         "modalAboutTitle": "👨‍💻 About Developer",
         "modalAboutRole": "Android Developer & ROM Maintainer",
@@ -106,12 +124,30 @@ const uiTranslations = {
         "modalGuideTitle": "📖 Panduan Flashing",
         "modalGuideWarn": "<strong>⚠️ Peringatan:</strong> Cadangkan data Anda sebelum flashing!",
         "modalGuideSteps": `
-            <li>Reboot ke Custom Recovery (TWRP / OrangeFox).</li>
-            <li>Wipe Data, Cache, System, Vendor, dan Dalvik Cache.</li>
-            <li>Flash file zip ROM.</li>
-            <li>Flash file zip GApps (jika versi Vanilla).</li>
-            <li>Format Data (jika ganti ROM dari basis FBE).</li>
-            <li>Reboot Sistem dan nikmati!</li>
+            <h4 style="color: var(--md-primary); margin-top: 15px; margin-bottom: 5px;">A. Metode Standar</h4>
+            <ol>
+                <li>Reboot ke Custom Recovery (TWRP / OrangeFox).</li>
+                <li>Wipe Data, Cache, System, Vendor, dan Dalvik Cache.</li>
+                <li>Flash file zip ROM.</li>
+                <li>Flash file zip GApps (jika versi Vanilla).</li>
+                <li>Format Data (jika ganti basis ROM).</li>
+                <li>Reboot Sistem dan nikmati!</li>
+            </ol>
+            
+            <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Repartition Method</h4>
+            <ol>
+                <li>Reboot ke Custom Recovery (TWRP / OrangeFox).</li>
+                <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                <li>Format Data (ketik 'yes').</li>
+                <li>Instal Custom Recovery (dengan dukungan partisi ulang).</li>
+                <li>Flash file zip Repartition Script.</li>
+                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> once again.</li>
+                <li>Flash file zip Repartition Script.</li>
+                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> once again.</li>
+                <li>Wipe Data, Cache, Product, System, System_Ext, Vendor and Dalvik Cache.</li>
+                <li>Instal file zip ROM.</li>
+                <li>Reboot System.</li>
+            </ol>
         `,
         "modalAboutTitle": "👨‍💻 Tentang Developer",
         "modalAboutRole": "Developer Android & Maintainer ROM",
