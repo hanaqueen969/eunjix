@@ -188,6 +188,30 @@
             <div class="modal-body">
                 <p data-i18n="modalGuideWarn"><strong>⚠️ Warning:</strong> Backup your data before flashing!</p>
                 <div data-i18n="modalGuideSteps" class="guide-steps-container">
+                    <h4 style="color: var(--md-primary); margin-top: 15px; margin-bottom: 5px;">A. Standard Method</h4>
+                    <ol>
+                        <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
+                        <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                        <li>Flash the ROM zip file.</li>
+                        <li>Flash the GApps zip file (if Vanilla).</li>
+                        <li>Format Data (if changing ROM base).</li>
+                        <li>Reboot System and enjoy!</li>
+                    </ol>
+                    <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Repartition Method</h4>
+                    <ol>
+                        <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
+                        <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                        <li>Format Data (type 'yes').</li>
+                        <li>Flash Custom Recovery with (repartition supported).</li>
+                        <li>Flash the Repartition Script zip.</li>
+                        <li style="color: #ff007f;"><strong>Reboot to Recovery</strong> once again.</li>
+                        <li>Flash the Repartition Script zip.</li>
+                        <li style="color: #ff007f;"><strong>Reboot to Recovery</strong> once again.</li>
+                        <li>Wipe Data, Cache, Product, System, System_Ext, Vendor and Dalvik Cache.</li>
+                        <li>Flash the ROM zip files.</li>
+                        <li>Reboot System.</li>
+                    </ol>
+                </div>
             </div>
         </div>
     </div>
