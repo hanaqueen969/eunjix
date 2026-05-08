@@ -682,60 +682,73 @@ body.dark-mode .btn-filter.active, body.dark-mode .btn-filter:hover {
 }
 
 /* ==========================================
-   CARD WITH EDGE LASER EFFECT (CYBERPUNK)
+   6. THE HOLOGRAPHIC HUD CARDS (CYBERPUNK V2)
    ========================================== */
 .card {
-    background-color: transparent;
-    border-radius: var(--radius-card);
+    background-color: rgba(18, 18, 22, 0.4) !important; /* Efek Kaca Transparan */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(188, 156, 255, 0.2) !important;
+    
+    /* POTONGAN SUDUT SCI-FI (Atas-Kiri & Bawah-Kanan) */
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    border-radius: 0 !important; /* Buang sudut melengkung standar */
+    
     padding: 24px;
-    border: none;
-    /* Bouncy spring transition for depth */
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
-    overflow: hidden; 
-    z-index: 1; 
+    overflow: hidden;
+    z-index: 1;
 }
 
-/* Lift higher and slightly scale up on hover */
+/* Reaksi Melayang & Menyala Saat Kursor Mendekat */
 .card:hover {
     transform: translateY(-8px) scale(1.02);
+    border-color: #00c6ff !important;
+    box-shadow: 0 15px 35px rgba(0, 198, 255, 0.15);
+    background-color: rgba(18, 18, 22, 0.7) !important;
 }
 
-.card::after {
-    content: '';
-    position: absolute;
-    inset: 3px; 
-    background-color: var(--md-surface); 
-    border-radius: calc(var(--radius-card) - 3px);
-    z-index: -1; 
-    transition: background-color 0.3s;
-}
-
-.card:hover::after {
-    background-color: var(--md-surface-variant);
-}
-
+/* EFEK LASER PEMINDAI (SCANNER) SAAT DI-HOVER */
 .card::before {
     content: '';
     position: absolute;
-    width: 200%; 
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: conic-gradient(from 0deg, transparent 70%, #00c6ff 80%, var(--md-primary) 100%);
-    animation: spinLaser 3s linear infinite; 
-    z-index: -2; 
-    opacity: 0; 
-    transition: opacity 0.4s ease;
+    top: -10px; left: 0;
+    width: 100%; height: 2px;
+    background: #00c6ff;
+    box-shadow: 0 0 15px #00c6ff, 0 0 30px #00c6ff;
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 .card:hover::before {
     opacity: 1;
+    animation: hudScan 2s linear infinite;
 }
 
-@keyframes spinLaser {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+@keyframes hudScan {
+    0% { top: 0; opacity: 1; }
+    90% { opacity: 0.8; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* AURA BERSINAR DARI TENGAH KARTU */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(188, 156, 255, 0.1), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.card:hover::after {
+    opacity: 1;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 198, 255, 0.15), transparent 70%);
 }
 
 .card h2 {
@@ -1249,42 +1262,6 @@ body.dark-mode .icon-github { color: #ffffff; }
 .fab-community:hover {
     transform: translateY(-5px) scale(1.05);
     filter: brightness(1.1);
-}
-
-/* ==========================================
-   11. CYBER-MATRIX SCANLINES (SUPER LIGHTWEIGHT)
-   ========================================== */
-.card.cyber-matrix {
-    background-color: transparent !important;
-    border: 1px solid rgba(188, 156, 255, 0.1);
-}
-
-.card.cyber-matrix::after {
-    content: '';
-    position: absolute;
-    inset: 3px; 
-    background-color: var(--md-surface);
-
-    background-image: repeating-linear-gradient(
-        transparent 0px,
-        transparent 2px,
-        rgba(188, 156, 255, 0.15) 3px,
-        rgba(188, 156, 255, 0.15) 4px
-    );
-    border-radius: calc(var(--radius-card) - 3px);
-    z-index: -1;
-    transition: background-color 0.3s ease, background-image 0.3s ease;
-}
-
-.card.cyber-matrix:hover::after {
-    background-color: var(--md-surface-variant);
-
-    background-image: repeating-linear-gradient(
-        transparent 0px,
-        transparent 2px,
-        rgba(0, 198, 255, 0.25) 3px,
-        rgba(0, 198, 255, 0.25) 4px
-    );
 }
 
 /* ==========================================
