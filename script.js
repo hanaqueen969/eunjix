@@ -47,7 +47,6 @@ const uiTranslations = {
                 <li>Format Data (if changing ROM base).</li>
                 <li>Reboot System and enjoy!</li>
             </ol>
-            
             <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Repartition Method</h4>
             <ol>
                 <li>Reboot to Custom Recovery (TWRP / OrangeFox).</li>
@@ -133,20 +132,19 @@ const uiTranslations = {
                 <li>Format Data (jika ganti basis ROM).</li>
                 <li>Reboot Sistem dan nikmati!</li>
             </ol>
-            
-            <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Repartition Method</h4>
+            <h4 style="color: #00c6ff; margin-top: 20px; margin-bottom: 5px;">B. Metode Repartisi</h4>
             <ol>
                 <li>Reboot ke Custom Recovery (TWRP / OrangeFox).</li>
-                <li>Wipe Data, Cache, System, Vendor and Dalvik Cache.</li>
+                <li>Wipe Data, Cache, System, Vendor, dan Dalvik Cache.</li>
                 <li>Format Data (ketik 'yes').</li>
-                <li>Instal Custom Recovery (dengan dukungan partisi ulang).</li>
-                <li>Flash file zip Repartition Script.</li>
-                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> once again.</li>
-                <li>Flash file zip Repartition Script.</li>
-                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> once again.</li>
-                <li>Wipe Data, Cache, Product, System, System_Ext, Vendor and Dalvik Cache.</li>
-                <li>Instal file zip ROM.</li>
-                <li>Reboot System.</li>
+                <li>Flash Custom Recovery (yang mendukung repartisi).</li>
+                <li>Flash file zip Script Repartisi.</li>
+                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> sekali lagi.</li>
+                <li>Flash file zip Script Repartisi.</li>
+                <li style="color: #ff007f;"><strong>Reboot ke Recovery</strong> sekali lagi.</li>
+                <li>Wipe Data, Cache, Product, System, System_Ext, Vendor, dan Dalvik Cache.</li>
+                <li>Flash file zip ROM.</li>
+                <li>Reboot Sistem.</li>
             </ol>
         `,
         "modalAboutTitle": "👨‍💻 Tentang Developer",
