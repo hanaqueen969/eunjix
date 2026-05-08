@@ -1,5 +1,23 @@
 [
     {
+        "name": "AlphaDroid-16-gapps-X00TD-v4.4",
+        "date": "2026-05-08",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 16",
+        "maintainer": "EunjiX",
+        "size": "2.1 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1r2Nz5xRrXNWA4EwSRFsLMaI6ZcZQWgK7&export=download",
+        "md5": "65445914a2488a5bbba1494e8eb43fd2",
+        "gapps": true,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source side",
+            "Initial unoffical build",
+            "Build with new partition scheme"
+        ]
+    },
+    {
         "name": "axion-2.6-QUASIS-UNOFFICIAL-CORE",
         "date": "2026-05-01",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
