@@ -1020,11 +1020,17 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
 
 .modal-content {
     background-color: var(--md-surface);
-    margin: 15% auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    max-width: 400px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
     padding: 24px;
     border-radius: var(--radius-card);
-    width: 80%;
-    max-width: 400px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
@@ -1035,6 +1041,7 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
     border-bottom: 1px solid var(--md-outline);
     padding-bottom: 10px;
     margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 .modal-header h2 {
@@ -1052,9 +1059,9 @@ body.dark-mode .spec-grey { background-color: #424242; color: #E0E0E0; }
 }
 
 .modal-body {
-    max-height: 60vh;
     overflow-y: auto;
     padding-right: 10px;
+    flex-grow: 1;
 }
 
 .modal-body::-webkit-scrollbar {
