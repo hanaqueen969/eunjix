@@ -1,5 +1,24 @@
 [
     {
+        "name": "Nusantara-SiXtY-N9-X00T-10.0.14-v2",
+        "date": "2026-05-09",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 10",
+        "maintainer": "EunjiX",
+        "size": "751 MB",
+        "downloadLink": "https://drive.google.com/uc?id=11C3QszqVPq4dATkl5F8A-ojEs_VZfPC1&export=download",
+        "md5": "b63373b5563947e5d13e801a0e503db7",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source",
+            "Update audio and display configuration",
+            "Disable native stats collection service",
+            "Modify gps.conf for enhanced GPS settings"
+        ]
+    },
+    {
         "name": "EvolutionX-16.0-X00TD-11.7-Unofficial",
         "date": "2026-05-08",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
