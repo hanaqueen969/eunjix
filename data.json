@@ -1,5 +1,24 @@
 [
     {
+        "name": "RROS-Q-LTS-20260513-X00TD-Unofficial",
+        "date": "2026-05-13",
+        "device": "Asus Zenfone Max Pro M1 (X00TD)",
+        "type": "ROM",
+        "category": "Android 10",
+        "maintainer": "EunjiX",
+        "size": "1 GB",
+        "downloadLink": "https://drive.google.com/uc?id=1WqkKkIwoYgw0CVYrIG7l2-eYED0S76BJ&export=download",
+        "md5": "f9ed222ce83b24a005895e4d48061a56",
+        "gapps": false,
+        "safetynet": false,
+        "changelog": [
+            "Sync with latest source",
+            "Update audio and display configuration",
+            "Disable native stats collection service",
+            "Modify gps.conf for enhanced GPS settings"
+        ]
+    },
+    {
         "name": "Nusantara-SiXtY-N9-X00T-10.0.14-v2",
         "date": "2026-05-09",
         "device": "Asus Zenfone Max Pro M1 (X00TD)",
